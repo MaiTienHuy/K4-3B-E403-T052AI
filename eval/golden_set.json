@@ -1,0 +1,203 @@
+[
+  {
+    "id": "GS-01",
+    "source": "tutor_turns.csv:T04261",
+    "category": "chatlog_real",
+    "current_lecture": "Day10",
+    "user_input": "tôi muốn học lại bài 1",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Học viên tại Day 10 yêu cầu học lại bài 1 nguyên văn từ chatlog"
+  },
+  {
+    "id": "GS-02",
+    "source": "tutor_turns.csv:T04265",
+    "category": "chatlog_real",
+    "current_lecture": "Day10",
+    "user_input": "giúp tôi ôn lại bài 1",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Học viên xin ôn lại bài 1"
+  },
+  {
+    "id": "GS-03",
+    "source": "tutor_turns.csv:T04272",
+    "category": "chatlog_real",
+    "current_lecture": "Day10",
+    "user_input": "bạn giúp tôi ôn lại bài 1",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Học viên nhờ trợ lý ôn bài 1"
+  },
+  {
+    "id": "GS-04",
+    "source": "tutor_turns.csv:T01484",
+    "category": "chatlog_real",
+    "current_lecture": "Day05",
+    "user_input": "tóm tắt cho tôi buổi học hôm trước",
+    "expected_lecture_code": "Day04",
+    "expected_action": "route_and_summarize",
+    "description": "Học viên tại Day 05 xin tóm tắt buổi hôm trước (Day 04)"
+  },
+  {
+    "id": "GS-05",
+    "source": "tutor_turns.csv:T04271",
+    "category": "chatlog_real",
+    "current_lecture": "Day10",
+    "user_input": "mình muốn ôn tập lại buổi 1",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Biến thể xưng hô mình muốn ôn tập lại buổi 1"
+  },
+  {
+    "id": "GS-06",
+    "source": "tutor_turns.csv:T03112",
+    "category": "chatlog_real",
+    "current_lecture": "Day06",
+    "user_input": "kiến thức này hôm trước thầy có nói ở buổi 3 đúng không, tóm tắt lại giúp mình",
+    "expected_lecture_code": "Day03",
+    "expected_action": "route_and_summarize",
+    "description": "Hỏi kiến thức liên hệ đến buổi 3 từ buổi 6"
+  },
+  {
+    "id": "GS-07",
+    "source": "chatlog_derived",
+    "category": "chatlog_real",
+    "current_lecture": "Day08",
+    "user_input": "buổi 2 mình học về gì nhỉ",
+    "expected_lecture_code": "Day02",
+    "expected_action": "route_and_summarize",
+    "description": "Hỏi nội dung bài 2 khi đang ở bài 8"
+  },
+  {
+    "id": "GS-08",
+    "source": "chatlog_derived",
+    "category": "chatlog_real",
+    "current_lecture": "Day12",
+    "user_input": "cho mình hỏi lại phần Data Pipeline của Day 10",
+    "expected_lecture_code": "Day10",
+    "expected_action": "route_and_summarize",
+    "description": "Hỏi đích danh chủ đề và mã ngày"
+  },
+  {
+    "id": "GS-09",
+    "source": "chatlog_derived",
+    "category": "chatlog_real",
+    "current_lecture": "Day03",
+    "user_input": "bài hôm qua nói về AI Foundation là slide số mấy?",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Học viên Day 03 hỏi về bài hôm trước (Foundation Day 01)"
+  },
+  {
+    "id": "GS-10",
+    "source": "chatlog_derived",
+    "category": "chatlog_real",
+    "current_lecture": "Day07",
+    "user_input": "tóm tắt nhanh Day 05 phần Evaluation giúp mình",
+    "expected_lecture_code": "Day05",
+    "expected_action": "route_and_summarize",
+    "description": "Hỏi tóm tắt bài 5 kèm chủ đề Evaluation"
+  },
+  {
+    "id": "GS-11",
+    "source": "synthetic_hard_layer_1",
+    "category": "hard_layer_1_grounding",
+    "current_lecture": "Day05",
+    "user_input": "tóm tắt cho mình bài học số 25",
+    "expected_lecture_code": null,
+    "expected_action": "refuse_out_of_curriculum",
+    "description": "Lớp 1 (Nguồn sự thật): Hỏi bài không tồn tại (khoá chỉ có 20 buổi)"
+  },
+  {
+    "id": "GS-12",
+    "source": "synthetic_hard_layer_1",
+    "category": "hard_layer_1_grounding",
+    "current_lecture": "Day02",
+    "user_input": "giải thích thuyết tương đối hẹp của Einstein",
+    "expected_lecture_code": null,
+    "expected_action": "refuse_out_of_curriculum",
+    "description": "Lớp 1 (Nguồn sự thật): Hỏi kiến thức ngoài lề giáo trình"
+  },
+  {
+    "id": "GS-13",
+    "source": "synthetic_hard_layer_2",
+    "category": "hard_layer_2_ambiguity",
+    "current_lecture": "Day01",
+    "user_input": "buổi trước học gì",
+    "expected_lecture_code": null,
+    "expected_action": "ask_clarification",
+    "description": "Lớp 2 (Mơ hồ): Đang ở Day 01 hỏi 'buổi trước' (không có buổi 0)"
+  },
+  {
+    "id": "GS-14",
+    "source": "synthetic_hard_layer_2",
+    "category": "hard_layer_2_ambiguity",
+    "current_lecture": "Day10",
+    "user_input": "bài về Eval đo lường học ở đâu",
+    "expected_lecture_code": "Day05",
+    "expected_action": "ask_clarification",
+    "description": "Lớp 2 (Mơ hồ): Khái niệm Eval xuất hiện ở cả Day 05 (cơ bản) và Day 19 (nâng cao)"
+  },
+  {
+    "id": "GS-15",
+    "source": "synthetic_hard_layer_3",
+    "category": "hard_layer_3_out_of_scope",
+    "current_lecture": "Day04",
+    "user_input": "cho tôi xem trước đề thi tốt nghiệp của Day 20",
+    "expected_lecture_code": null,
+    "expected_action": "refuse_out_of_scope",
+    "description": "Lớp 3 (Ngoài thẩm quyền): Đòi đề thi / tài liệu bảo mật"
+  },
+  {
+    "id": "GS-16",
+    "source": "synthetic_hard_layer_3",
+    "category": "hard_layer_3_out_of_scope",
+    "current_lecture": "Day08",
+    "user_input": "đổi lịch học sang tối mai giúp tôi",
+    "expected_lecture_code": null,
+    "expected_action": "refuse_out_of_scope",
+    "description": "Lớp 3 (Ngoài thẩm quyền): Yêu cầu hành động quản trị hệ thống"
+  },
+  {
+    "id": "GS-17",
+    "source": "synthetic_hard_layer_4",
+    "category": "hard_layer_4_domain",
+    "current_lecture": "Day06",
+    "user_input": "bài Docker của thầy Nam dạy ở ngày mấy",
+    "expected_lecture_code": "Day04",
+    "expected_action": "route_and_summarize",
+    "description": "Lớp 4 (Đặc thù domain): Tên công cụ không nằm ở tên bài chính mà nằm trong nội dung Day 04"
+  },
+  {
+    "id": "GS-18",
+    "source": "synthetic_hard_layer_4",
+    "category": "hard_layer_4_domain",
+    "current_lecture": "Day05",
+    "user_input": "giải hộ tôi bài tập nộp điểm của bài 3",
+    "expected_lecture_code": "Day03",
+    "expected_action": "refuse_homework_solving",
+    "description": "Lớp 4 (Đặc thù domain): Hỏi bài cũ nhưng đòi giải hộ bài tập chấm điểm"
+  },
+  {
+    "id": "GS-19",
+    "source": "synthetic_rare",
+    "category": "rare_case",
+    "current_lecture": "Day09",
+    "user_input": "on lai bai 1 giup minh",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Case hiếm: Tiếng Việt không dấu"
+  },
+  {
+    "id": "GS-20",
+    "source": "synthetic_rare",
+    "category": "rare_case",
+    "current_lecture": "Day07",
+    "user_input": "so sánh kiến thức Day 01 với Day 02 khác nhau chỗ nào",
+    "expected_lecture_code": "Day01",
+    "expected_action": "route_and_summarize",
+    "description": "Case hiếm: Câu hỏi gộp đa bài học (Day 01 và Day 02)"
+  }
+]
+
