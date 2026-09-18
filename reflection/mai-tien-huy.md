@@ -1,5 +1,7 @@
 # Reflection cá nhân — Mai Tiến Huy
 
+**Thành viên:** Mai Tiến Huy
+
 ## 1. Vai trò cá nhân
 
 Phụ trách **Product & AI Spec** và điều phối chung dự án. Vai trò này là biến vấn đề học viên gặp phải thành một lát cắt sản phẩm rõ ràng, viết tiêu chí đánh giá và bảo đảm các phần spec, prototype, evaluation và validation cùng hướng về một mục tiêu.
