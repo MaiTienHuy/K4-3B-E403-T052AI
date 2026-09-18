@@ -1,0 +1,183 @@
+{
+  "lectures": {
+    "D1": {
+      "file": "day1.pdf",
+      "name": "Day 1: AI & LLM Foundation",
+      "order": 1,
+      "blurb": "Nền tảng AI/ML/LLM, Transformer, Attention. Không dạy chỉ số tự động hóa sản phẩm."
+    },
+    "D2": {
+      "file": "day2.pdf",
+      "name": "Day 2: AI Prompting & Tools",
+      "order": 2,
+      "blurb": "Prompting, công cụ, KPI kinh doanh (% tác vụ/tin nhắn tự động hóa). Không phải ngưỡng tự chủ sản phẩm."
+    },
+    "D3": {
+      "file": "day3.pdf",
+      "name": "Day 3: ReAct Pattern & Agent Loop",
+      "order": 3,
+      "blurb": "Chatbot vs Agent, Agentic Fit, vòng lặp ReAct Thought-Action-Observation."
+    },
+    "D4": {
+      "file": "day4.pdf",
+      "name": "Day 4: Prompt Engineering & Tool Calling",
+      "order": 4,
+      "blurb": "Prompt Role/Task/Context/Format, few-shot, CoT, tool calling."
+    },
+    "D5": {
+      "file": "day5.pdf",
+      "name": "Day 5: Quản trị sản phẩm AI",
+      "order": 5,
+      "blurb": "Uncertainty, PRD AI, ngưỡng tự động / chỉ số tự động hóa sản phẩm, handoff, HAX G10."
+    },
+    "D6": {
+      "file": "day6.pdf",
+      "name": "Day 6: AI Product & Project Management",
+      "order": 6,
+      "blurb": "Agile cho AI, vòng đời dự án, quản lý project AI — khác KPI Day 2 và ngưỡng tự động Day 5."
+    }
+  },
+  "concepts": [
+    {
+      "id": "automation_index",
+      "aliases": [
+        "chỉ số tự động hóa",
+        "chi so tu dong hoa",
+        "automation index",
+        "ngưỡng tự động",
+        "nguong tu dong"
+      ],
+      "ambiguous_if_only": ["tự động hóa", "tu dong hoa", "automation"],
+      "primary": "D5",
+      "also": ["D2"],
+      "senses": {
+        "D5": ["chỉ số", "chi so", "sản phẩm ai", "san pham ai", "ngưỡng tự động", "handoff", "độ tự tin", "do tu tin"],
+        "D2": ["% tác vụ", "tin nhắn", "tin nhan", "tác động kinh doanh", "tac dong kinh doanh", "csat"]
+      },
+      "expand_query": {
+        "D5": "ngưỡng tự động độ tự tin handoff chỉ số tự động hóa sản phẩm",
+        "D2": "% tác vụ tin nhắn tự động hóa tác động kinh doanh"
+      },
+      "labels": {
+        "D5": "Ngưỡng tự động / handoff (quản trị sản phẩm)",
+        "D2": "KPI % tác vụ/tin nhắn tự động hóa (kinh doanh)"
+      }
+    },
+    {
+      "id": "attention",
+      "aliases": ["attention mechanism", "cơ chế attention", "co che attention", "attention"],
+      "primary": "D1",
+      "also": [],
+      "senses": {},
+      "labels": {"D1": "Attention / Transformer (nền tảng LLM)"}
+    },
+    {
+      "id": "transformer",
+      "aliases": ["transformer", "cơ chế transformer"],
+      "primary": "D1",
+      "also": [],
+      "senses": {},
+      "labels": {"D1": "Transformer (Day 1 Foundation)"}
+    },
+    {
+      "id": "rag",
+      "aliases": ["rag", "retrieval augmented"],
+      "primary": null,
+      "also": ["D2", "D3", "D5"],
+      "senses": {
+        "D2": ["boost", "fine-tune", "context", "retrieval"],
+        "D3": ["chatbot", "faq", "retrieve policy"],
+        "D5": ["nguồn", "trích dẫn", "citation"]
+      },
+      "labels": {
+        "D2": "Day 2: RAG như cách boost/mua model",
+        "D3": "Day 3: chatbot có retrieval, chưa cần agent",
+        "D5": "Day 5: citation / không bịa nguồn"
+      }
+    },
+    {
+      "id": "evaluation",
+      "aliases": ["evaluation", "eval", "đánh giá mô hình", "danh gia mo hinh"],
+      "primary": null,
+      "also": ["D2", "D4", "D5", "D6"],
+      "senses": {},
+      "labels": {
+        "D2": "Day 2: đo kỳ vọng trước khi build",
+        "D4": "Day 4: eval hành vi prompt",
+        "D5": "Day 5: acceptance / rubric sản phẩm",
+        "D6": "Day 6: eval trong vòng đời dự án"
+      }
+    },
+    {
+      "id": "rubric",
+      "aliases": ["rubric", "rubric chấm điểm", "chấm điểm"],
+      "primary": null,
+      "also": ["D4", "D5"],
+      "senses": {},
+      "labels": {
+        "D4": "Day 4: rubric / output contract của prompt",
+        "D5": "Day 5: rubric acceptance trên tập transcript"
+      }
+    },
+    {
+      "id": "prompting",
+      "aliases": ["prompting", "kỹ thuật prompting", "prompt engineering"],
+      "primary": "D2",
+      "also": ["D4"],
+      "senses": {
+        "D2": ["tools", "công cụ", "workflow"],
+        "D4": ["few-shot", "cot", "role", "tool calling", "system prompt"]
+      },
+      "labels": {
+        "D2": "Day 2: prompting & tools (tổng quan)",
+        "D4": "Day 4: prompt engineering chi tiết"
+      }
+    },
+    {
+      "id": "react_pattern",
+      "aliases": ["react", "react pattern", "vòng lặp react", "thought-action-observation", "thought action observation"],
+      "primary": "D3",
+      "also": [],
+      "senses": {},
+      "labels": {"D3": "ReAct loop (Day 3)"}
+    },
+    {
+      "id": "agentic",
+      "aliases": ["agentic agent", "agentic fit", "agent loop"],
+      "primary": "D3",
+      "also": [],
+      "senses": {},
+      "labels": {"D3": "Agentic Agent / Fit (Day 3)"}
+    },
+    {
+      "id": "tool_calling",
+      "aliases": ["tool calling", "few-shot", "few shot", "function calling"],
+      "primary": "D4",
+      "also": ["D3"],
+      "senses": {
+        "D4": ["schema", "parallel", "prompt"],
+        "D3": ["tay chân", "agent", "observation"]
+      },
+      "labels": {
+        "D4": "Day 4: tool calling & few-shot",
+        "D3": "Day 3: tool như action của agent"
+      }
+    },
+    {
+      "id": "ai_uncertainty",
+      "aliases": ["không chắc chắn", "khong chac chan", "uncertainty", "quản trị sản phẩm ai", "quan tri san pham ai"],
+      "primary": "D5",
+      "also": [],
+      "senses": {},
+      "labels": {"D5": "Uncertainty & quản trị sản phẩm AI"}
+    },
+    {
+      "id": "ai_project",
+      "aliases": ["project management", "quản lý dự án ai", "vòng đời dự án", "agile cho ai"],
+      "primary": "D6",
+      "also": [],
+      "senses": {},
+      "labels": {"D6": "AI Project Management (Day 6)"}
+    }
+  ]
+}

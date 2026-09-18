@@ -99,6 +99,7 @@
     "id": "C07",
     "question": "explain this slide",
     "current_lecture": "D3",
+    "current_page": 1,
     "taxonomy_class": "common",
     "source": "chatlog:T03378",
     "expected": {
