@@ -1,5 +1,7 @@
 # Reflection cá nhân — Trịnh Xuân Huy
 
+**Thành viên:** Trịnh Xuân Huy
+
 ## 1. Vai trò cá nhân
 
 Phụ trách **Prompt Engineering & AI Router** trong nhóm. Phần việc tập trung vào lớp logic quyết định: xác định câu hỏi của học viên thuộc bài đang mở, bài giảng khác, câu hỏi mơ hồ hay ngoài phạm vi; sau đó chọn cách xử lý phù hợp và an toàn.
