@@ -1,17 +1,19 @@
 # Bảng log validation R6
 
-Nguồn: `session-01-nguyen-thai-luong.md`, `session-02-tran-cao-quoc-dinh.md`.  
+Nguồn: `session-01-nguyen-thai-luong.md`, `session-02-tran-cao-quoc-dinh.md`, `session-03-nguyen-xuan-truong.md`.  
 Cách đọc: ưu tiên cột **Quan sát** (tầng 1) hơn quote (tầng 2–3). Không dùng câu “sẽ dùng” làm bằng chứng chính.
 
 | Người thử (tên / vai — willing user?) | Task đã giao | Quan sát (hành vi) | Quote nguyên văn | Mức |
 |---|---|---|---|---|
 | Nguyễn Thái Lương · học viên K4, ôn bài cũ trước giờ học · **willing user CP1, ngoài nhóm** | Đang học bài 5, tìm và ôn lại few-shot / prompting buổi trước | 0:40 gõ câu hỏi trong Day 5, **không** đổi bài trước. 1:25 có câu trả lời Day 4 nhưng **không bấm nguồn** — mở dropdown, lật Day 2. 3:15 mới bấm nguồn, cột trái nhảy đúng trang, nói “Đây, cái mình cần.” Lượt 2 (`chỉ số tự động hóa`) bấm nguồn ngay. | “À mình đang tự tìm few-shot trong danh sách bài… không biết cái nút xanh là nhảy trang.” · “Đừng tự chuyển trang dùm — hôm nọ mình chỉ muốn đọc nhanh rồi quay lại Day 5.” | **S2** không nhận ra nút nguồn (chặn khép job). **S3** sidebar API không dùng. |
 | Trần Cao Quốc Định · học viên K4, kẹt khi nối lý thuyết giữa buổi · **willing user CP1, ngoài nhóm** | Đang học bài 5, ôn ReAct; follow-up khó: attention rồi RAG | ReAct: hỏi → bấm nguồn Day 3 → đọc slide (khép). Attention: hệ thống nói Day 1, **không có trang**; soi dropdown không thấy Day 1; hỏi lại vẫn đứng. RAG: hệ thống đưa 3 lựa chọn, do dự ~12s, tự bấm Day 3, bấm nguồn. | “Nó biết là bài 1 rồi mà đứng. Ít ra cho mình hỏi cái khác còn slide, hoặc nói rõ bài 1 chưa nạp.” · “À, nó bắt mình chọn buổi chứ không bịa.” | **S2** Day 1 hết đường ôn. **S3** G10 do dự nhưng tự xong — giữ nguyên. |
+| Nguyễn Xuân Trường · học viên K4, cần tra cứu nhanh kèm trích dẫn gốc · **willing user CP1, ngoài nhóm** | Đang học bài 5, tìm và ôn lại tool calling / Chain-of-Thought buổi trước | 0:25 hỏi trong Day 5, **bấm nguồn ngay**, cột trái nhảy Day 4. 2:40 muốn về Day 5: chọn dropdown → **về trang 1**, không về trang đang đọc; không để ý nút Hoàn tác. 4:20 hỏi chỉ số tự động hóa, bấm nguồn Day 5. | “Đây, có số trang.” · “Về bài đang học mới khó — mình chọn lại Day 5 là nó về trang đầu, phải lật lại.” | **S2** dropdown reset về trang 1. **S3** không thấy Hoàn tác. |
 
-## Chủ đề lặp (2/2 phiên)
+## Chủ đề lặp (3/3 phiên)
 
-1. Job chỉ xong khi **bấm nguồn ra đúng trang** — đọc chữ trong chat chưa đủ.
-2. Day 1 / attention: route đúng nhưng **không ôn được** vì kho chưa có slide.
+1. Job ôn chỉ xong khi **bấm nguồn ra đúng trang** — đọc chữ trong chat chưa đủ.
+2. Sau khi nhảy bài, **quay lại buổi đang học** dễ đứt mạch (Lương sợ auto-jump; Trường mất trang khi chọn lại dropdown).
+3. Day 1 / attention: route đúng nhưng **không ôn được** vì kho chưa có slide (Định).
 
 Không có phiên nào chỉ toàn lời khen.
 

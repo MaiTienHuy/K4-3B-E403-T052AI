@@ -54,9 +54,6 @@ Không hướng dẫn nút, không giải thích UI.
 
 ## 4. Nói lúc dùng (tầng 2)
 
-- “Mình đang tự tìm few-shot trong danh sách bài… không biết cái nút xanh là nhảy trang.”
-- “Đây, cái mình cần.” (sau khi bấm nguồn)
-- “Lần này mình bấm luôn, khỏi chọn bài.” (lượt 2)
 
 ---
 

@@ -47,21 +47,15 @@ Sau ~3 phút job ReAct khép, giao thêm (vì chưa đủ chỗ khó):
 | 2:00 | Gõ `attention mechanism là gì`. |
 | 2:20 | Hệ thống báo thuộc Day 1, **không có trang nguồn**. Người thử dừng. Click dropdown tìm “Day 1” — **không có** trong danh sách (chỉ Day 2–6). |
 | 2:40 | Lặp lại câu hỏi một lần. Cùng kết quả. Không tiến được. |
-| 2:50 | Cứu hộ: “Bạn nghĩ nó nên hoạt động thế nào?” |
+| 2:50 | Nhóm: “Bạn nghĩ nó nên hoạt động thế nào?” |
 | 3:00 | Nói lúc dùng: “Nó biết là bài 1 rồi mà đứng. Ít ra cho mình hỏi cái khác còn slide, hoặc nói rõ bài 1 chưa nạp.” |
 | 3:40 | Tự gõ `RAG là gì`. Hệ thống **không đoán** — hiện 3 lựa chọn Day 2 / 3 / 5. |
-| 4:00 | Ngần ~12 giây, rồi bấm Day 3. Có câu trả lời + nguồn. Bấm nguồn. |
-| 5:10 | Dừng. Không nói “mình sẽ dùng hàng ngày”. |
 
 **Kết luận tầng 1:** Happy path ReAct chạy. Chỗ khó thật là Day 1 hết đường; G10 với RAG thì người thử chọn được sau một nhịp do dự.
 
 ---
 
 ## 4. Nói lúc dùng (tầng 2)
-
-- “Nó biết là bài 1 rồi mà đứng.”
-- “Ít ra cho mình hỏi cái khác còn slide, hoặc nói rõ bài 1 chưa nạp.”
-- (Khi thấy 3 nút RAG) “À, nó bắt mình chọn buổi chứ không bịa.”
 
 ---
 
