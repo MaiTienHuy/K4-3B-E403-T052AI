@@ -1,5 +1,4 @@
 # BÁO CÁO THU HOẠCH CÁ NHÂN (PERSONAL REFLECTION)
-## Dự án: VLearn Course Navigator — Trợ lý điều hướng & giải đáp bài giảng liên buổi
 
 - **Họ và tên:** Hoàng Ngọc Đức
 - **Nhóm:** T52AI
