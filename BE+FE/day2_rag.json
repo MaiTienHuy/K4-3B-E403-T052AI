@@ -1,0 +1,247 @@
+[
+  {
+    "page_index": 1,
+    "content": "A I I N A C T I O N - P 1 · N G ÀY 2\nXác định bài toán cho AI\nT\nừ brief mơ hồ → Problem Statement rõ ràng\nVinUniversity · Phase 1 · T\nuần 1 · 2026\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n1 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 2,
+    "content": "Instructor\n[T\nên Giảng Viên]\n[Chức danh / Vai trò]\n■  [Kinh nghiệm 1]\n■  [Kinh nghiệm 2]\n■  [Kinh nghiệm 3]\n■  [Kinh nghiệm 4]\nFocus: [Lĩnh vực chuyên môn — ví dụ: applied AI, product management, ...]\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n2 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 3,
+    "content": "Hôm nay bạn sẽ học gì?\n3 câu hỏi xuyên suốt ngày:\n1. Có thật sự nên dùng AI không?\n2. Nếu có, nên dùng mức nào: rule, feature, hay agent?\n3. Khi nào nên Go / Not Y\net / No-Go?\nSáng: học framework + case study   →   Chiều: tự làm với bài toán thật từ chính bạn\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n3 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 4,
+    "content": "Flow buổi học\nSÁ N G — L E CT U R E ( 3 H )\n— Có nên dùng AI không? Buy vs Build\n— Design Thinking + Human-Centered Design\n— AI System + 5 Workflow Patterns\n— AI Readiness Checklist + Problem Statement\n— Go / Not Y\net / No-Go\nC H I ỀU — L A B ( 3.5 H )\n\nCá nhân: Scan 5+ bài toán từ chính mình\n\nCá nhân: Viết Quick Problem Card top 3\n\nNhóm: Pitch – Challenge – Vote → chọn 1\n\nNhóm: Deep-Dive: workflow, PS, research\n\nNhóm: Evaluate: AI Readiness → Go/No-Go\n\nCá nhân: Reflection Log\nD E L I V E R A B L E S\n➤ Deliverable 1\nScan & Filter Log (cá nhân)\n➤ Deliverable 2\nProblem Deep-Dive (nhóm)\n➤ Deliverable 3\nReflection Log (cá nhân)\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n4 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 5,
+    "content": "Building AI Product\nAI Product chứa Build Product bên trong — không thay thế\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n5 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 6,
+    "content": "Một số cuốn sách nền tảng\nDeep-dive thêm sau khóa học\nK Ỹ T H UẬT & H Ệ T H ỐN G\nAI Engineering\nChip Huyen (2025)\n“Có API rồi — làm gì tiếp?” RAG, agents, guardrails, eval,\nproduction ops.\nP R O D U CT & ST R AT E GY\nInspired\nMar ty Cagan (2018)\nBuild cái gì, cho ai, và tại sao họ cần? Khám phá vấn đề thay\nvì feature factory.\nT Ư D U Y & T H I ẾT K Ế\nDesign of Ever yday Things\nDon Norman (2013)\nAffordance, feedback, mental model. Nền tảng UX — đặc\nbiệt quan trọng khi AI không giải thích được.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n6 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 7,
+    "content": "“T\nôi muốn xây chatbot cho khách hàng”\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n7 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 8,
+    "content": "Pause & Think\nNếu stakeholder nói \"T\nôi muốn làm chatbot\", theo bạn họ thực ra đang muốn giải bài toán gì?\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n8 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 9,
+    "content": "“Chatbot” không phải 1 bài toán\nFAQ tự động\nUpsell / cross-sell\nRouting ticket\nQA / analytics\nSentiment analysis\nCHA\nTBOT\n1 brief = 5 bài toán = 5 kiến trúc = 5 metric khác nhau\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n9 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 10,
+    "content": "AI không sai.\nHọ giải sai bài toán.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n10 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 11,
+    "content": "“Đừng bao giờ giải quyết vấn đề\nmà bạn được yêu cầu giải quyết.”\nDon Norman — The Design of Everyday Things (2013)\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n11 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 12,
+    "content": "T ìm đúng vấn đề trước khi tìm giải pháp\nMô hình Double Diamond — Don Norman / British Design Council (2005)\nDiamond 1 — T ìm đúng vấn đề\nDiscover: Mở rộng — khảo sát vấn đề căn bản\nDefine: Thu hẹp — xác định đúng bài toán gốc\nDiamond 2 — T ìm đúng giải pháp\nDevelop: Mở rộng — nhiều giải pháp tiềm năng\nDeliver: Thu hẹp — chọn và triển khai\nKỹ sư và doanh nhân được đào tạo để giải vấn đề.\nNhà thiết kế được đào tạo để khám phá vấn đề thật.\nGiải pháp xuất sắc cho sai vấn đề có thể còn tệ hơn không có giải pháp.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n12 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 13,
+    "content": "Quy trình thiết kế lấy con người làm trung tâm (HCD)\n4 bước lặp lại bên trong mỗi Diamond — Don Norman\nObser vation (Quan sát)\nNhững người được quan sát phải phù hợp với đối tượng mục tiêu.\nQuan sát những khách hàng tiềm năng trong cuộc sống bình thường, hiểu các tình huống thực tế mà họ gặp phải.\nIdeation (T\nạo ra ý tưởng)\nT\nạo ra nhiều ý tưởng, sáng tạo mà không bị ràng buộc bởi các hạn chế.\nT\nránh phê bình ý tưởng của bản thân hay của người khác.\nĐặt câu hỏi về tất cả mọi thứ.\nPrototype (T\nạo mẫu thử)\nT\nạo một nguyên mẫu nhanh cho mỗi giải pháp tiềm năng.\nMục tiêu là kiểm tra nhanh nhất có thể trước khi build.\nT\nest (Kiểm tra)\nNgồi quan sát cách người dùng tương tác với Prototype trong thực tế.\nIteration (Lặp lại)\nTinh chỉnh và nâng cao liên tục.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n13 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 14,
+    "content": "Những câu hỏi “ngớ ngẩn” đã thay đổi thế giới\nNorman: “Hãy đặt câu hỏi về tất cả mọi thứ — đặc biệt là những điều hiển nhiên”\n“Nếu quá táo rơ i xuống, thì mặt trăng\ncó rơ i không?”\nIsaac Newton\nCâu hỏi ngớ ngẩn về quả táo → nền tảng toàn bộ cơ học\ncổ điển & cách mạng công nghiệp.\n“T\nại sao con phải đợi lâu mới xem\nđược ảnh?”\nJennifer Land, 3 tuổi (1943)\nCâu hỏi của đứa trẻ → cha cô bé phát minh máy ảnh\nchụp lấy ngay Polaroid.\n“Nếu cho thuê phòng trống cho\nkhách du lịch thì sao?”\nBrian Chesky & Joe Gebbia (2007)\nHai designer vật lộn tiền thuê nhà → Airbnb, định giá\nhơn 100 tỷ USD.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n14 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 15,
+    "content": "Problem-first, not AI-first\n3 case studies thực tế\nT\neam Cursor\nXây AI cho ngành mình không hiểu sâu (4 tháng\ntrong cơ khí) → thiếu dữ liệu, thiếu insight domain.\nKết quả: Hủy ý tưởng, pivot về phần mềm.\nAr tifact\nAI cá nhân hóa tin tức tốt, nhưng market dynamics\nyếu (thiếu viral loop tự nhiên).\nKết quả: Đóng cửa sản phẩm.\nCEO Lovable (Summer Labs)\nCông nghệ tốt nhưng yêu cầu đổi tác phong làm\nviệc của user hiện có để tích hợp.\nKết quả: Khó được thị trường chấp nhận.\nBài học\nĐừng xây AI rồi mong mọi người tự tìm cách dùng. Hãy bắt đầu từ trải nghiệm end-to-end và xác định đúng điểm AI giải quyết vấn đề người dùng thực sự\nquan tâm.\nCâu hỏi không còn là HOW to build — mà là WHA\nT TO BUILD\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n15 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 16,
+    "content": "T ìm bài toán AI ở đâu?\n4 Lenses — Scan from self\nb\nLặp lại\nViệc gì tôi/team làm đi làm lại mỗi\nngày/tuần?\n⏰\nT\nốn thời gian\nViệc gì mất nhiều thời gian hơn lẽ\nra nên mất?\n¼\nAI có thể tốt hơn\nSản phẩm nào tôi dùng mà AI có\nthể cải thiện?\nPain từ người khác\nĐồng nghiệp/bạn bè hay phàn\nnàn gì?\nLab hôm nay bắt đầu bằng scan from self — dùng 4 lenses này để quét xung quanh mình trước khi chọn bài toán.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n16 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 17,
+    "content": "4 anti-patterns làm team đốt tiền vào AI sai chỗ\n☐  Trend-first: Thay đổi theo trend “agent” trước khi rõ actor, workflow, metric\n☐  No baseline: Không có rule/manual baseline để so sánh nhưng vẫn build AI trước\n☐  No eval path: Có demo đẹp nhưng không có bộ test, không biết khi nào đủ tốt để deploy\n☐  No owner of failure: Không rõ ai review output sai, ai rollback, ai chịu compliance\n☑  Nguyên tắc: Dùng AI khi nó tạo giá trị hơn cách đơn giản hơn, không phải vì nó nghe hiện đại hơn\nNhiều team nghĩ mình đang build AI. Thực ra họ đang build mơ hồ.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n17 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 18,
+    "content": "Discover y inter view: 5 câu hỏi nên hỏi stakeholder\n■\nPain point là gì? Xảy ra bao nhiêu lần / ngày / tuần?\n■\nWorkflow hiện tại ra sao? T\nool nào, bước nào, ai hand-off cho ai?\n■\nCost của vấn đề là gì? Mất bao nhiêu phút, tiền, SLA, hay conversion?\n■\nNếu AI sai thì sao? Điểm nào cần HITL, approval, hoặc chỉ để suggest?\n■\nAi sẽ nói YES? Metric nào và risk nào quyết định việc đầu tư?\nLưu ý: Nếu stakeholder không mô tả được workflow hiện tại và failure cost, team đang đề xuất solution trong sương mù.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n18 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 19,
+    "content": "Có nên dùng AI không và dùng mức nào?\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n19 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 20,
+    "content": "Khi nào AI đáng để làm?\nA I H ỢP K H I N ÀO\n■  T\nác vụ lặp lại nhưng biến thể vừa phải\n■  Cần tổng hợp / search\n■  Nhiều bước + nhiều tool\n■  Deterministic thì rule có thể tốt hơn\nV Ì SAO D OA N H N G H I ỆP ĐẦU T Ư\n01 Sống còn — không dùng AI → bị đối thủ vượt\n02 Hiệu quả — giảm chi phí, tăng tốc, cải thiện throughput\n03 Khám phá — đầu tư để học, tránh tụt hậu, tìm cơ hội mới\nLý do áp dụng AI sẽ quyết định cách build, mức tự động hóa và mức đầu tư.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n20 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 21,
+    "content": "Tự xây dựng hay mua giải pháp?\nHai góc nhìn bổ sung nhau\nG Ó C N H Ì N 1 — C H I P H U Y E N , A I E N G I N E E R I N G ( 2 0 2 5 )\nIn-house (Build)\nKhi AI là lợi thế cốt lõi và yếu tố sống còn\nMua / SaaS (Buy)\nKhi AI chủ yếu là productivity layer\nG Ó C N H Ì N 2 — M I T C I S R ( VA N D E R M E U L E N & W I XO M , 2 0 2 5 )\nBuy\nBoost\nBuild\nThực tế: Hầu hết team đang ở giữa — Boost (RAG / fine-tune). Không phải lúc nào cũng cần build from scratch.\nOff-the-shelf, vendor duy trì\nNhanh, ít differentiation\nPhụ thuộc vendor roadmap\nMua model + enhance bằng data riêng\nFine-tune hoặc RAG\nCần data governance tốt\nT\nự xây custom model\nControl cao nhất, đắt nhất\nCần team AI mạnh\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n21 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 22,
+    "content": "Thiết lập kỳ vọng\nĐo gì để biết AI có đáng triển khai?\nTrước khi build, phải biết thế nào là “đủ tốt”\n1 — TÁC Đ ỘN G K I N H D OA N H\nQuestion: AI tạo giá trị gì cho doanh nghiệp?\nĐo bằng:\n✓ % tác vụ / tin nhắn tự động hóa\n✓ khả năng xử lý tăng thêm\n✓ tốc độ phản hồi cải thiện\n✓ thời gian lao động tiết kiệm\n2 — S Ự H À I LÒ N G K H ÁC H H À N G\nQuestion: Người dùng có thật sự thấy tốt hơn\nkhông?\nĐo bằng:\n✓ CSA\nT (Điểm hài lòng khách hàng)\n✓ phản hồi trực tiếp\n✓ hành vi sử dụng / bỏ giữa chừng / phải retry\n3 — N G ƯỠN G H ỮU D ỤN G\nQuestion: T\nới mức nào thì sản phẩm đủ tốt để\nship?\nĐo bằng:\nChất lượng: đầu ra có đúng và hữu ích không?\nĐộ trễ: TTFT, TPOT, thời gian phản hồi\nChi phí: mỗi request tốn bao nhiêu?\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n22 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 23,
+    "content": "Từ demo đến production\nV ì sao AI mất thời gian thật sự?\nD E M O\n1 cuối tuần\n✓ Verify giả thuyết\n✓ Align stakeholder\n✓ T\nest nhanh UI/UX\nP R O D U CT I O N\nNhiều tháng → năm\n✗ Edge cases, guardrails\n✗ Hallucination\n✗ Giành từng 1% chất lượng\n80% → 95% là đoạn đau nhất\nLinkedIn: 80% trải nghiệm trong 1 tháng, mất thêm 4 tháng để nhích lên 95%\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n23 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 24,
+    "content": "AI Product Lifecycle\n6 milestones từ ý tưởng đến vận hành\nData Flywheel: feedback từ production → cải thiện data → model → architecture\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n24 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 25,
+    "content": "Vai trò của UX trong AI product\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n25 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 26,
+    "content": "AI System = Model + Context + Planning + T\nools\nThành phần\nCần khi...\nFailure mode\nControl\nCost driver\nModel\nT\nask mở\n, cần suy luận / tạo văn bản\nHallucination, inconsistency\nEval set, guardrails, structured output\ntokens / latency\nContext\nCần dựa trên tài liệu / trạng thái ngoài\nWrong retrieval, stale context\nRetrieval test, freshness, citations\nstorage / retrieval\nPlanning\nT\nask nhiều bước, cần ra quyết định trung gian\nLooping, over-planning\nStep limit, policy, approvals\nextra calls\nT\nools\nCần đọc / ghi hệ thống ngoài\nSide effects, prompt injection\nsandbox, allowlist, HITL\nAPI calls / failures\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n26 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 27,
+    "content": "Framework chọn Rule / Workflow / Agent\nBắt đầu đơn giản nhất — chỉ tăng phức tạp khi bài toán thật sự cần\n04\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n27 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 28,
+    "content": "Ba mức giải pháp: Rule / Workflow / Agent\nRule / Script\nLLM Feature\nAgent\nThứ tự ưu tiên thực dụng: bắt đầu từ bên trái, chỉ đi sang bên phải khi giá trị tăng hơn độ phức tạp.\nInput ổn định\nLogic rõ ràng\nCần predictability cao\nCompliance nặng\nInput biến thể vừa phải\nOutput cần linh hoạt\nCó metric và guardrails\nHuman có thể review\nNhiều bước, nhiều tool\nT\nrạng thái thay đổi liên tục\nCần quyết định động\nCó risk control rõ ràng\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n28 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 29,
+    "content": "Decision tree: chọn mức giải pháp\nT\nừ bài toán của bạn → Rule, LLM Feature, hay Agent?\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n29 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 30,
+    "content": "Workflow patterns — đủ cho hầu hết bài toán\nNguồn: Anthropic — Building Effective Agents (2024)\n1. Prompt Chaining\nChia task thành chuỗi bước tuần tự. Có gate kiểm tra giữa\ncác bước.\nVD: Viết outline → check → viết bài\n2. Routing\nPhân loại input → đưa vào nhánh chuyên biệt. T\nối ưu từng\nloại riêng.\nVD: CS query → FAQ / refund / kỹ thuật\n3. Parallelization\nChạy song song rồi tổng hợp (sectioning), hoặc chạy nhiều\nlần lấy vote.\nVD: Guardrail + response đồng thời\nNguyên tắc Anthropic: “Star t with the simplest solution possible, only increase complexity when needed.” — Hầu hết bài toán thực tế chỉ cần 3 patterns này.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n30 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 31,
+    "content": "Khi nào cần phức tạp hơn?\nOrchestrator-Workers, Evaluator-Optimizer, và Agent\n4. Orchestrator-Workers\n1 LLM phân việc động cho workers. Subtasks không biết\ntrước.\nVD: Coding agent sửa nhiều file\n5. Evaluator-Optimizer\n1 LLM tạo, 1 LLM đánh giá → lặp cho đến khi đạt.\nVD: Dịch văn học → review → sửa\nAgent\nLLM tự lập kế hoạch + gọi tools + iterate. Autonomous\nloop.\nVD: SWE-bench, computer use\nChi phí cao hơn, lỗi cộng dồn. Chỉ dùng khi không predict được subtasks và cần tool autonomy. “\nAgents’ autonomy makes them ideal for scaling tasks in trusted\nenvironments.”\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n31 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 32,
+    "content": "AI readiness checklist - 5 câu hỏi nhanh\nThiếu baseline hoặc thiếu eval = chưa biết AI đang tốt hơn cái gì\nLưu ý: AI \"\nJagged Frontier\" — ranh giới AI gồ ghề, khó đoán. Framework là star ting point, không phải kết luận. Phải test thực tế. (Dell'Acqua, Mollick et al.\n2023)\n✓\nValue:\nBài toán xảy ra thường xuyên và đang tốn thời gian / tiền / SLA thật sự?\n✓\nBaseline:\nHiện tại đã có manual hoặc workflow baseline để so sánh?\n✓\nEval:\nCó metric, sample cases, hoặc logs để đánh giá reproducible?\n✓\nT\nolerance:\nSai số hữu hạn có chấp nhận được, hoặc có HITL ở điểm quan trọng?\n✓\nOperations:\nCó owner, rollback, logging, và policy cho output sai?\n×\nDưới 3 câu YES: dừng lại và làm rõ problem / workflow trước khi đầu tư AI\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n32 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 33,
+    "content": "Gate criteria: đi tiếp khi nào, dừng lại khi nào?\nRules of ML + practical AI product heuristics\nGiai đoạn\nGo nếu...\nNo-Go nếu...\nProblem Scoping\nActor, workflow, pain, metric đã rõ\nProblem mơ hồ, mô tả solution trước problem\nData Readiness\nCó data / logs / docs / SME suppor t để eval\nKhông có nguồn dữ liệu hoặc dữ liệu quá lệch\nBaseline / Model\nHeuristic, workflow, hoặc baseline người được xác lập\nChưa biết AI cần tốt hơn cái gì\nBuild & Eval\nCó bộ test, task-level eval, latency/cost budget\nChỉ có demo thủ công, không có reproducible eval\nDeploy Controls\nCó HITL, logging, approval, rollback, owner of failure\nKhông rõ ai duyệt output, ai dừng hệ thống khi sai\nKey takeaways:\n• Không có metric → không có gate\n• Không có baseline → chưa biết tốt hơn gì\n• Không có eval → mới chỉ là demo\n• Không có rollback → deploy là đánh bạc\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n33 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 34,
+    "content": "Problem Statement\nT\nừ ý tưởng mơ hồ đến bài toán có metric, boundary, và đường eval\n05\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n34 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 35,
+    "content": "Khung problem statement cho AI system\nMột problem statement tốt phải giúp suy ra được test case, metric và boundary\nActor / Operator\nAi đang làm việc này hằng ngày?\nCurrent\nWorkflow\nHiện tại họ xử lý qua những bước nào, dùng tool gì?\nBottleneck\nBước nào chậm, lỗi, không nhất quán, hoặc cần tổng hợp quá nhiều?\nImpact\nT\nổn thất đo bằng thời gian, chi phí, SLA, error rate, hay conversion nào?\nSuccess Metric\nKhi nào được coi là thành công? Mức ngưỡng là bao nhiêu?\nOperational\nBoundar y\nHệ thống được phép làm gì, không được phép làm gì, và điểm nào cần HITL?\nNhớ\nNếu viết xong mà bạn chưa suy ra được test cases, eval metric, và architecture boundary, thì problem statement vẫn chưa đủ chặt.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n35 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 36,
+    "content": "Từ problem statement sang eval plan\nProblem Statement tốt là cầu nối giữa bài toán kinh doanh và bộ eval kỹ thuật.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n36 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 37,
+    "content": "Chọn đúng metric: Nor th Star & input/output\nNguồn: Lenny Rachitsky (a16z) — Nor th Star Metric Framework\nCâu hỏi: metric nào nếu tăng hôm nay sẽ tăng tốc flywheel kinh doanh nhất?\nRevenue\nARR, GMV\nCustomer Growth\nPaid users, market share\nConsumption\nMessages sent, nights\nbooked\nEngagement\nMAU, DAU\nGrowth Efficiency\nL\nTV/CAC, margins\nUser Experience\nNPS, CSA\nT\nOutput Metric (Nor th Star)\nKết quả cuối — team không trực tiếp control\nAirbnb: “nights booked”\nInput Metrics (Levers)\nCái team làm hằng ngày để đẩy output lên\nAirbnb: conversion rate, supply of homes, site traffic\nPS field “Success Metric”: cần cả output metric (thành công = gì?) và input metric (team làm gì hằng ngày?). “Cải thiện hiệu suất” không phải metric.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n37 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 38,
+    "content": "Discover y và Feasibility\nKiểm tra bài toán, khả năng triển khai, và risk trước khi viết dòng code đầu tiên\n07\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n38 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 39,
+    "content": "Go / No-Go / Not Y\net\nBài học cho Dev\nQuyết định chuẩn không phải lúc nào cũng là “build”\n. Rất nhiều dự án AI thành công bắt đầu bằng không build ngay, mà bằng đo baseline, gom logs, và\nthử workflow đơn giản hơn.\nLab hôm nay không bắt buộc ra kết luận Go. Kết luận tốt có thể là Not Y\net hoặc No-Go.\nGo: Problem rõ, baseline rõ, eval rõ, risk controls rõ.\n—\nNot Y\net: Có pain thật, nhưng thiếu data, thiếu metric, hoặc chưa rõ workflow boundary.\n—\nNo-Go: Rule-based đã đủ tốt, hậu quả khi sai quá đắt, hoặc change cost lớn hơn value.\n—\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n39 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 40,
+    "content": "Pause & Think\nWorkflow nào quanh bạn đủ đau để đáng cân nhắc AI?\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n40 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 41,
+    "content": "T\nổng kết ngày 2\n1\nĐừng giải quyết vấn đề bạn được yêu cầu giải quyết — hãy tìm vấn đề thật trước.\n2\nBắt đầu từ rule / workflow trước khi nhảy lên agent. Đúng architecture quan trọng hơn đúng model.\n3\n5 Workflow Patterns (Anthropic) cho vocabulary cụ thể — hầu hết bài toán chỉ cần Prompt Chaining hoặc Routing.\n4\nProblem Statement tốt phải suy ra được eval plan, system boundary, và success metric có ngưỡng cụ thể.\n5\n\"Not Y\net\" không phải thất bại — đó là quyết định trưởng thành nhất khi chưa đủ data hoặc baseline.\n(Don Norman)\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n41 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 42,
+    "content": "Thực hành\nLab 2: Chọn use case, viết PS, và ra quyết định go/no-go\n08\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n42 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 43,
+    "content": "T\nổng quan lab 2 — deliverables & AI rules\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n43 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 44,
+    "content": "Phase 1 + 2\nHoạt động cá nhân\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n44 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 45,
+    "content": "Hướng dẫn vẽ workflow diagram\nDùng cho Phase 4 — Deep-dive: Current-State & Future-State\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n45 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 46,
+    "content": "Worked example: weekly repor t — trước và sau AI\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n46 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 47,
+    "content": "Phase 3 · Pitch – Challenge – Vote\nFramework peer review trong nhóm · 30 phút\n\u0010\nPITCH\n2 phút / người\n⚡\nCHALLENGE\n3 câu hỏi chuẩn · 3 phút / người\n🗳️\nVOTE\n5–10 phút sau khi tất cả pitch\nPresent bài toán của mình cho nhóm\nDùng Quick Problem Card làm visual\n\"Rule/script đủ chưa? Có thật sự cần AI\nkhông?\"\n\"Ngoài bạn, ai đau nữa? Bao nhiêu người?\"\n\"Metric đo được không? Có số cụ thể\nchưa?\"\nMỗi người 1 phiếu → chọn 1 bài đi tiếp\nViết 1 dòng kill rationale cho bài bị loại\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n47 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 48,
+    "content": "Quick problem card — ví dụ đã điền\nMỗi người điền 1 card trong Phase 2 · ~5 phút\nBài toán (1 câu)\nMất 3h/ngày để tổng hợp feedback từ 200+ email khách hàng thành báo cáo cho team sản phẩm\nAi đang đau?\nProduct Manager · ~50 PM trong công ty · lặp lại mỗi tuần\nWorkflow hiện tại\n(3-5 bước)\nNhận email → đọc từng email → tự tóm tắt → gộp thành doc → gửi team\nBước nào tốn\nnhất?\nBước 2 — đọc & tóm tắt (~2.5h/ngày · 150h/tuần × 50 PM)\nAI có thể giúp ở\nbước nào?\nBước 2 — AI tóm tắt từng email, PM review + edit trước khi gửi\nĐo thành công\nbằng gì? (có số!)\nGiảm từ 3h → dưới 30 min/ngày · chất lượng báo cáo đồng đều hơn\nQuick gut\n☑ LLM — cần xử lý ngôn ngữ tự nhiên đa dạng, không thể rule-based\nú\nNhận xét\nBài toán rõ ràng, đo được, đủ scale (50 người × hàng tuần). AI phù hợp vì cần xử lý ngôn ngữ tự nhiên đa dạng.\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n48 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  },
+  {
+    "page_index": 49,
+    "content": "Lab 2 — Deliverables — Mỗi người cần nộp gì?\nDeliverables Example\nLAB 2 · 4 giờ\nScan bài toán, filter, deep-dive, và quyết định go/no-go\n1\nScan & Filter Log\nLiệt kê 5+ bài toán (4 Lenses) → Quick Problem Card top 3 → Peer validate → Chọn 1\n\nCá nhân\n2\nProblem Deep-Dive\nCurrent-state flow + PS + metrics + research + future-state flow + AI fit + Go/Not Y\net/No-Go\n\nNhóm\n3\nReflection Log\nGhi lại cách dùng AI trong quá trình lab: prompt, output, và chỗ phải sửa\n\nCá nhân\nInstructor: [T\nên giảng viên]\nAI in Action - Day 02\n49 / 49",
+    "source": "/home/hoangduc/Downloads/day2.pdf"
+  }
+]

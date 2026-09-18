@@ -1,0 +1,217 @@
+[
+  {
+    "page_index": 1,
+    "content": "Prompt Engineering & Tool Calling\nAICB-P1 · Ngày 4 · Làm sao nói đểAI hiểu đúng ý?\nTên Giảng Viên\nVinUniversity · Phase 1 · Tuần 1 · 2026",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 2,
+    "content": "?\nHÃY SUY NGHĨ...\n“Hai người hỏi AI cùng một việc,\nmột người nhận kết quảxuất sắc,\nngười kia nhận rác. Tại sao?”\nGiữcâu hỏi này trong đầu khi học bài hôm nay",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 3,
+    "content": "Nội Dung Bài Học\n1. Prompt fundamentals\n2. Advanced prompting techniques\n3. System prompt engineering\n4. Context engineering\n5. Tool calling\n6. Design principles cho tools\n7. Parallel tool calls & patterns\n8. Lab 4 + deliverable cuối buổi\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n1 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 4,
+    "content": "Mục Tiêu Ngày 4\n■Viết được prompt rõ ràng theo các thành phần Role / Task / Context / Format\n■Hiểu khi nào nên dùng zero-shot, few-shot, CoT, và khi nào không cần\n■Viết được system prompt production-grade cho agent\n■Khai báo được tool schema và hiểu vòng lặp tool calling từmodel đến tool rồi quay\nlại model\nMục tiêu của buổi này là hiểu cơ chế: prompt là interface giữa human intent và model\nbehavior; tool calling là interface giữa model và thếgiới bên ngoài.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n2 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 5,
+    "content": "Deliverable Cuối Ngày\n1 agent script chạy được + 1 system prompt + 2 tool schemas + 5 test questions\n+ ghi chú lỗi prompt/tool/control flow\n■2 tools tựviết: 1 API wrapper đơn giản, 1 data query đơn giản\n■1 system prompt có rules, constraints, output contract\n■5 câu test đểchứng minh agent biết khi nào trảlời trực tiếp, khi nào gọi tool\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n3 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 6,
+    "content": "01\nPrompt Engineering Funda-\nmentals\nPrompt tốt không phải prompt “hay”, mà là prompt tạo ra\nhành vi mong muốn ổn định",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 7,
+    "content": "Prompt = Interface Giữa Ý Định và KhảNăng Model\nPrompt kém\n“Viết email cho tôi”\nKhông rõ gửi ai, vềgì, tone nào, dài bao nhiêu.\nKết quả: chung chung, khó dùng ngay.\nPrompt tốt\nViết email xin lỗi khách hàng\nvềgiao hàng trễ2 ngày,\ntone lịch sự, dưới 120 từ,\ncó CTA rõ ràng.\nRõ task, context, constraint, format.\nKết quả: actionable hơn hẳn.\nLưu ý: Nguyên tắc vàng: Specificity beats cleverness. Prompt ngắn nhưng\nrõ nghĩa thường tốt hơn prompt dài mà lan man.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n4 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 8,
+    "content": "4 Thành Phần Của Prompt Tốt\nROLE\nVai trò\nTASK\nNhiệm vụ\nCONTEXT\nBối cảnh\nFORMAT\nĐịnh dạng\n“Act as a senior\nsupport analyst”\n“Summarize\nthe ticket\nand propose\nnext step”\n“For an internal\noperations\ndashboard”\n“Output as JSON\nwith 3 fields”\nBắt đầu với Task + Format. Chỉthêm Role hoặc Context khi chúng thực sựcải\nthiện chất lượng hoặc tính nhất quán.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n5 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 9,
+    "content": "Instruction vs Conversation vs System Prompt\nLoại prompt\nMục đích chính\nKhi dùng\nInstruction\nprompt\nRa lệnh trực tiếp cho một\ntác vụ\nHỏi đáp 1 lượt,\ntransform,\nsummarize, classify\nConversation\nprompt\nGiữngữcảnh nhiều lượt\nvới user\nChatbot, support, tutor, de-\nbugging nhiều bước\nSystem prompt\nĐặt\npolicy,\nboundary,\noutput contract\nAgent, assistant production,\nuse case cần hành vi ổn định\nAnthropic prompting guidance + teaching heuristics\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n6 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 10,
+    "content": "Token Budget Awareness\n■Prompt dài hơn không đồng nghĩa prompt tốt hơn.\n■Mỗi token thừa làm tăng chi phí, latency, và đôi khi cảnhiễu.\n■Hãy ưu tiên: instruction rõ, examples đúng chỗ, output contract rõ.\n■Rule thực dụng: nếu prompt dài thêm nhưng không làm thay đổi hành vi mong\nmuốn, hãy cắt bớt.\nLưu ý: Prompt engineering tốt là tối ưu độrõ và khảnăng kiểm soát, không\nphải thi xem ai viết prompt dài hơn.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n7 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 11,
+    "content": "02\nAdvanced Prompting Tech-\nniques\nDùng kỹthuật nâng cao khi chúng cải thiện chất lượng\nthật sự, không dùng như thần chú",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 12,
+    "content": "Zero-shot, One-shot, Few-shot, CoT\nZero-shot\nKhông có ví dụmẫu.\nNhanh,\nrẻ,\nnên\nthử\ntrước.\nOne-shot\n1 ví dụmẫu.\nTốt khi cần giữformat\nrõ hơn.\nFew-shot\n2–5 ví dụ.\nTăng\nconsistency,\nnhưng tốn token hơn.\nCoT\nCho model reasoning\ntừng bước.\nHữu ích cho task suy\nluận.\nThứtựthửthực dụng: zero-shot -> few-shot -> decomposition / CoT. Đừng\nnhảy vào prompt phức tạp ngay từđầu.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n8 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 13,
+    "content": "Khi Nào Dùng Few-shot?\n■Khi model hiểu task nhưng ra sai\nformat hoặc không ổn định giữa các\ninput tương tự.\n■Khi cần giữtiêu chuẩn đánh giá, tone,\nhoặc cách lập luận nhất quán.\n■Ví dụmẫu nên relevant, đa dạng vừa\nđủ, và đúng format mong muốn.\nFew-shot không phải để“dạy lại” model mọi thứ; nó là\ncách chỉra pattern mà bạn muốn model bám theo.\nNguồn minh họa: zero/few-shot teaching graphic trong\nrepo\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n9 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 14,
+    "content": "Few-shot Prompting — Python Example\nexamples = \"\"\"\nInput: \"Great product, fast delivery!\"\nOutput: Positive\nInput: \"Terrible quality, waste of money\"\nOutput: Negative\n\"\"\"\nprompt = f\"\"\"Classify feedback as Positive, Negative, or Neutral.\n{examples}\nInput: \"Love the design but shipping was slow\"\nOutput:\"\"\"\nprint(prompt)\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n10 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 15,
+    "content": "Chain-of-Thought (CoT) và Tree-of-Thought\nCoT phù hợp khi:\n■Bài toán cần reasoning nhiều bước\n■Bạn muốn model giải thích logic\ntrung gian\n■Bạn cần debug xem model sai ở\nbước nào\nTree-of-Thought:\n■Hữu ích cho bài toán cần explore\nnhiều hướng\n■Phức tạp hơn, tốn token và latency\nhơn\n■Chỉnên giới thiệu như extension,\nkhông phải mặc định cho mọi task\nCoT là công cụcải thiện reasoning, không phải phép màu. Nếu task vốn dĩ chỉ\nlà formatting hoặc extraction đơn giản, CoT thường là overkill.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n11 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 16,
+    "content": "03\nSystem Prompt Engineering\nSystem prompt tốt làm agent nhất quán hơn, dễkiểm soát\nhơn, và dễtest hơn",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 17,
+    "content": "Anatomy của System Prompt Production-grade\nPersona: role, expertise level, communication style\nRules: việc nên làm, việc luôn phải làm\nCapabilities: model được phép dùng tools nào, dữliệu nào\nConstraints: không làm gì, khi nào từchối, khi nào escalate\nOutput format: JSON, markdown, bullet list, schema, language\npriority\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n12 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 18,
+    "content": "System Prompt — Python Example\nsystem_prompt = \"\"\"\nYou are a support triage agent for an e-commerce team.\nRules:\n- Answer in Vietnamese.\n- Be concise and operational.\n- If billing or refund policy is unclear, ask for more details.\nConstraints:\n- Never invent order status.\n- Never promise refunds without tool confirmation.\nOutput format:\nReturn JSON with: intent, action, reply\n\"\"\"\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n13 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 19,
+    "content": "System Prompt Anti-Patterns\n□\nQuá dài: nhồi mọi thứvào 1 prompt 2000+ tokens rồi hy vọng model luôn\nlàm đúng\n□\nMâu thuẫn: vừa bảo “ngắn gọn”, vừa bắt “giải thích chi tiết từng bước”\n□\nMơ hồ: “hãy thông minh”, “hãy chuyên nghiệp”, nhưng không định nghĩa\nchuẩn output\n□\nKhông test edge cases: quên kiểm tra câu hỏi ngoài phạm vi, refusal, tool\nfailure\n□\n✓\nNguyên tắc: system prompt là policy layer. Càng rõ boundary, càng dễ\npredict hành vi\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n14 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 20,
+    "content": "04\nContext Engineering\nĐiều quan trọng không phải nhét bao nhiêu context, mà là\nchọn đúng context cần thiết",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 21,
+    "content": "Context Window Management\nSystem\nHistory\nCurrent input\nTools\nOutput\npolicy\nrecent / relevant\ncurrent task\nschemas\nbuffer\nLưu ý: Token budget allocation cần chủđộng: đừng đểhistory, tools, và ex-\namples ăn hết chỗdành cho output.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n15 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 22,
+    "content": "Memory Injection và Context Compression\nMemory injection\n■Chỉđưa vào facts thật sựcần cho\ntask hiện tại\n■Ưu tiên recent history hoặc\nrelevant history, không dump toàn\nbộtranscript\n■Tốt cho support agent, coding\nassistant, tutor nhiều lượt\nCompression\n■Summarize: tóm tắt phần cũ\n■Drop: bỏhẳn phần không còn liên\nquan\n■Archive: đẩy ra ngoài context, chỉ\nfetch lại khi cần\nContext engineering là bài toán chọn lọc và ưu tiên. Nếu mọi thứđều quan\ntrọng, thực ra không có gì thực sựnổi bật với model.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n16 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 23,
+    "content": "Token Budget Allocation: Nên Nghĩ Theo RổNào?\nRổtoken\nChứa gì\nRủi ro nếu quá nhiều\nSystem prompt\npolicy, rules, output format\nchậm hơn, khó maintain\nHistory\nrecent\nturns,\nfacts\nliên\nquan\ndễnhiễu, dễlost in the mid-\ndle\nTool schemas\ntên tool, mô tả, tham số\nmodel\nchọn\ntool\ntệ\nnếu\nschema dài hoặc mơ hồ\nOutput buffer\nphần model dùng đểtrảlời\nbịcắt cụt output nếu cấp\nthiếu\nTeaching heuristic for token budgeting\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n17 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 24,
+    "content": "05\nTool Calling\nTool calling là cách agent chuyển từ“nói” sang “tương tác\nvới thếgiới thực”",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 25,
+    "content": "Tool Calling Flow\nLLM\ndecides\ntool_call JSON\nApp executes\ntool\ntool result\nLLM final\nresponse\nModel không tựchạy code hay tựgọi API ngoài. Ứng dụng của bạn nhận tool\nrequest, chạy tool, rồi gửi kết quảtrởlại model.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n18 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 26,
+    "content": "Tool Schema Anatomy\n■Name: nên ngắn, rõ, động từđúng\nviệc\n■Description: nói khi nào nên dùng\ntool này\n■Parameters: mô tảinput bằng\nJSON Schema\n■Required fields: giúp model biết\nthiếu gì thì chưa gọi được\nLưu ý: LLM đọc description như tài\nliệu hướng dẫn.\nNếu description\nmơ hồ, model sẽchọn sai tool hoặc\ntruyền sai arguments.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n19 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 27,
+    "content": "Tool Schema — Python Example\nweather_tool = {\n\"type\": \"function\",\n\"function\": {\n\"name\": \"get_weather\",\n\"description\": \"Get current weather for a city when the user asks about weather conditions.\",\n\"parameters\": {\n\"type\": \"object\",\n\"properties\": {\n\"city\": {\"type\": \"string\", \"description\": \"City name, e.g. Hanoi\"}\n},\n\"required\": [\"city\"]\n}\n}\n}\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n20 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 28,
+    "content": "06\nDesign Principles Cho Tools\nTool tốt là software interface tốt, không phải prompt trang\ntrí",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 29,
+    "content": "4 Nguyên Tắc Thiết KếTool\nNguyên tắc\nÝ nghĩa\nNếu vi phạm\nSingle\nResponsi-\nbility\nMỗi tool làm 1 việc rõ ràng\nmodel khó quyết định nên gọi\ntool nào\nIdempotency\nCùng input cho cùng kết\nquả; side effect được kiểm\nsoát\nretry dễsinh lỗi phụ\nGranularity hợp lý\nKhông quá nhỏ, cũng không\nôm quá nhiều việc\nhoặc overhead lớn,\nhoặc\ntool quá cứng\nTest độc lập\nUnit test từng tool trước khi\ngắn vào agent\nkhó tách lỗi tool khỏi lỗi\nprompt\nPrinciples for reliable tool interfaces\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n21 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 30,
+    "content": "Tool Granularity: Quá NhỏHay Quá To Đều Có Giá\nQuá nhỏ\n■get_customer_name\n■get_customer_email\n■get_customer_phone\nHệquả: quá nhiều calls, overhead lớn,\nflow rối.\nQuá to\n■handle_all_customer_operations\nHệquả: model không hiểu boundary,\nkhó debug, khó reuse.\nThiết kếtool quanh một hành động nghiệp vụrõ ràng: ví dụlookup_order,\nget_weather, query_sales_data, send_email_draft.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n22 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 31,
+    "content": "07\nParallel Tool Calling & Pat-\nterns\nNhanh hơn không có nghĩa là tốt hơn nếu flow control và\nmerge logic không rõ",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 32,
+    "content": "Sequential vs Parallel Tool Calls\nSequential\nTool B cần output của Tool A.\nVí dụ: tìm order ID -> rồi mới tra shipping sta-\ntus.\nParallel\nCác tool độc lập có thểchạy cùng lúc.\nVí dụ: gọi thời tiết, tỷgiá, và lịch họp song\nsong.\nLưu ý: Chỉsong song hóa khi không có phụthuộc dữliệu. Nếu vẫn cần bước\nmerge / verify rõ ràng ởcuối.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n23 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 33,
+    "content": "3 Tool Use Patterns Thường Gặp\n1. Conditional tool use: agent tựquyết định có cần tool hay trảlời trực tiếp.\n2. Tool chaining: output của tool A là input của tool B.\n3. Parallel fetch + merge: lấy nhiều nguồn độc lập rồi tổng hợp kết quả.\nTool calling không chỉlà “gọi API”. Nó là bài toán control flow: khi nào gọi, gọi\ncái gì, gọi theo thứtựnào, và làm gì khi tool fail.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n24 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 34,
+    "content": "Minimal Tool Loop — Python Example\nmessages = [{\"role\": \"user\", \"content\": \"ờThi ếtit Hà ộNi và ỷt giá USD hôm nay?\"}]\nresponse = client.responses.create(model=\"gpt-4.1\", input=messages, tools=tools)\nfor item in response.output:\nif item.type == \"function_call\":\nresult = run_tool(item.name, json.loads(item.arguments))\nmessages.append(item)\nmessages.append({\"type\": \"function_call_output\", \"call_id\": item.call_id, \"output\": result})\nfinal = client.responses.create(model=\"gpt-4.1\", input=messages, tools=tools)\nprint(final.output_text)\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n25 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 35,
+    "content": "08\nThực Hành\nLab 4: Build first agent với system prompt + 2 tools + 5\ntest cases",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 36,
+    "content": "Hands-on 4: Cách Chạy Lab\n1. Viết 1 system prompt với rules, constraints, output format\n2. Tạo 2 custom tools: 1 API wrapper đơn giản, 1 data query đơn giản\n3. Nối tools vào agent loop\n4. Chạy 5 câu test đểxem khi nào agent trảlời trực tiếp, khi nào gọi tool\n5. Ghi lại lỗi thuộc loại prompt, tool schema, hay control flow\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n26 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 37,
+    "content": "Lab Skeleton — Python Example\nSYSTEM_PROMPT = open(\"system_prompt.txt\").read()\nTOOLS = [get_weather_tool(), query_sales_tool()]\nwhile True:\nuser_input = input(\"You: \")\nmessages.append({\"role\": \"user\", \"content\": user_input})\nresponse = call_model(messages, SYSTEM_PROMPT, TOOLS)\nmessages = handle_tool_calls(response, messages)\nprint(render_final_answer(messages, SYSTEM_PROMPT, TOOLS))\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n27 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 38,
+    "content": "Lab #4\nMục tiêu: Build ReAct agent với 2 custom tools, viết system prompt chuẩn,\nvà test end-to-end trên 5 câu hỏi\nDeliverable: Deliverable: Agent script chạy được + system prompt + 2 tool\nschemas + 5 test outputs + note lỗi prompt/tool/control flow\nThời gian: 150 phút\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n28 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 39,
+    "content": "Tổng kết — Key Takeaways\nNhững ý chính cần nhớtrước khi sang bài tiếp theo\n1\nPrompt = interface giữa human intent và model capability. Prompt tốt giúp model làm\nđúng việc, đúng format, đúng boundary.\n2\nSystem prompt tốt = agent nhất quán và predictable hơn, đặc biệt khi có tools và\nconstraints.\n3\nTool schema description quyết định rất mạnh việc model biết khi nào dùng tool nào\nvà gọi với arguments gì.\n4\nParallel tool calls nhanh hơn đáng kểkhi các tool độc lập; nếu có phụthuộc dữliệu,\nhãy giữflow tuần tự.\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n28 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 40,
+    "content": "Tiếp theo & Bài tập\nAI Product Thinking & Require-\nments\n“Bạn đã build được agent đầu tiên.\nNhưng build xong chưa đủ. Ngày\nmai: sản phẩm này dành cho ai,\nyêu cầu ra sao, và rủi ro nào phải\nnghĩ từđầu?”\n■Hoàn thiện Lab 4 với 5 test\nquestions rõ pass/fail\n■Đọc lại system prompt của\nmình và chỉra 2 chỗcòn mơ\nhồhoặc mâu thuẫn\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n29 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 41,
+    "content": "Tài Liệu Tham Khảo\n1 Anthropic. Prompt Engineering Overview. platform.claude.com/docs\n2 Anthropic. Claude Prompting Best Practices và Multishot Prompting.\nplatform.claude.com/docs\n3 Anthropic. Tool Use Overview. platform.claude.com/docs\n4 OpenAI. Function Calling Guide. developers.openai.com/api/docs/guides/function-calling\n5 Wei et al. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. 2022.\n6 LangGraph Docs. Quickstart. langchain-ai.github.io/langgraph\nGiảng viên (VinUni)\nAICB · Ngày 4\nTuần 1\n30 / 30",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 42,
+    "content": "Hỏi & Đáp\nBạn đang gặp lỗi vì model chưa hiểu ý bạn,\nhay vì tool contract của bạn chưa đủrõ?",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  },
+  {
+    "page_index": 43,
+    "content": "Cảm ơn!\nEmail: lecturer@vinuni.edu.vn\nSlides & tài liệu: github.com/aicb-vinuni\nLab template: bit.ly/aicb-day04-lab",
+    "source": "/home/hoangduc/Downloads/day4.pdf"
+  }
+]
