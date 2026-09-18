@@ -1,5 +1,7 @@
 # Reflection cá nhân — Lê Việt Hoàng
 
+**Thành viên:** Lê Việt Hoàng
+
 ## 1. Vai trò cá nhân
 
 Phụ trách **Code & Interactive Demo**, tập trung biến logic định tuyến và yêu cầu trong spec thành một prototype có thể thao tác được, đồng thời chuẩn bị luồng demo và phối hợp validation với willing users.
