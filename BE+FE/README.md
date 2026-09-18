@@ -74,6 +74,12 @@ Giao diện web sẽ tự động bật lên tại: `http://localhost:8501`.
 
 ---
 
+## 🐳 Hướng Dẫn Triển Khai (Docker & Tunnels)
+
+Để xem hướng dẫn chi tiết cách tự deploy miễn phí ứng dụng bằng Docker, Nginx và Cloudflare Tunnels (khắc phục giới hạn của Render, chống DDoS/Spam), vui lòng xem file [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+---
+
 ## 🧪 Công Cụ Đánh Giá (Evaluation)
 
 Dự án cung cấp sẵn bộ công cụ đánh giá (Evaluation) để kiểm tra khả năng định tuyến (Routing) và độ chính xác của AI.

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: vinuni-ai-app
+    restart: unless-stopped
+    volumes:
+      - ./chroma_db:/app/chroma_db
+      - ./.env:/app/.env
+    environment:
+      - PYTHONUNBUFFERED=1
+    # We no longer expose port 8501 directly to the host, 
+    # forcing traffic to go through Nginx.
+
+  nginx:
+    image: nginx:alpine
+    container_name: vinuni-ai-nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: vinuni-ai-tunnel
+    restart: unless-stopped
+    # Point the tunnel to Nginx on port 80 instead of the app directly
+    command: tunnel --url http://nginx:80
+    depends_on:
+      - nginx

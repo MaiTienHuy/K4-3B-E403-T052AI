@@ -215,6 +215,7 @@ def run_turn(question, provider_name, key, model_name, forced=None):
         citation_style="objects",
     )
 
+@st.cache_resource
 def get_chroma_collection(force_refresh=False):
     """Khởi tạo kết nối ChromaDB và lấy collection mới nhất"""
     if force_refresh:
