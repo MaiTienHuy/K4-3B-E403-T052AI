@@ -106,6 +106,9 @@ Loại: [x] Tối ưu tính năng có sẵn  [ ] Tính năng mới
 | **KB-07** | Học viên hỏi nhầm tên giảng viên hoặc nhầm thứ tự buổi (ví dụ: *"Bài 3 về Transformer"* trong khi Transformer ở Day 1) | ④ Đặc thù domain | Đính chính nhẹ nhàng: *"Khái niệm Transformer được thầy giảng chi tiết ở Day 1 (Foundation) chứ không phải Day 3 (Đánh giá mô hình). Mình đã tìm thấy tài liệu ở Day 1 cho bạn đây."* | HAX G11, G9 |
 | **KB-08** | Học viên bấm "Chuyển sang bài 1" nhưng lỡ tay và muốn quay lại bài đang học | Giao diện / Chỗ khó thao tác | Lưu state bài học cũ, hiển thị thanh toast hoàn tác: *"Đã chuyển sang Day 1. [↩ Hoàn tác quay lại Day 3]"*. | HAX G8, G17 |
 
+- **Tự kiểm nguy hiểm khi demo**: Kịch bản làm nhóm sợ nhất là **KB-02 (tiêu đề xuất hiện ở nhiều buổi) + KB-08 (đổi bài nhầm / hoàn tác sai)**. Vì nếu demo ở 2 kịch bản này sai, hệ thống sẽ trông rất “thông minh” ở happy path nhưng lại làm học viên mất niềm tin ngay khi phải xử lý mơ hồ hoặc nhầm ngữ cảnh. Đây là rủi ro lớn vì sản phẩm này không chỉ trả lời đúng, mà còn phải **định tuyến đúng và không làm học viên mất context**.
+- **Kết luận**: Chưa có kịch bản nào đáng sợ nếu nhóm đã giải quyết tốt 2 nhánh này. Nếu demo được 2 kịch bản này tốt, phần còn lại (out-of-scope / prompt injection / quiz refusal) đã nằm trong vùng kiểm soát an toàn của hệ thống.
+
 ---
 
 ## §6. Bốn đường đi của trải nghiệm
@@ -191,6 +194,13 @@ flowchart TD
 
 - **Quality Bar**:
   > **"Đạt khi ≥ 90% case xuyên buổi route đúng target_lecture, 100% mã trích dẫn trỏ đúng transcript thật, và 0% phát sinh hallucination khi gặp chủ đề ngoài giáo trình."**
+
+- **Chưa xử lý / chưa kịp xử lý **:
+  - **Case chưa kịp cover 100%**: câu hỏi có đề cập tới nhiều buổi đồng thời nhưng không có từ khóa rõ ràng; hệ thống có thể cần câu hỏi làm rõ thêm, nhưng chưa có dataset đủ lớn để đo chính xác trên 100% chỉ số giao diện hoặc thời gian hoàn thành tác vụ.
+  - **Kịch bản chưa khép kín**: học viên hỏi theo kiểu ngôn ngữ rất ngắn, mơ hồ lịch sử buổi học (ví dụ: "bữa trước", "phần kia", "bài giống lúc trước"), chưa có dữ liệu đầy đủ để đo độ ổn định trên toàn bộ khuôn ngữ tự nhiên của sinh viên.
+  - **Rủi ro multi-turn chưa đo hết**: khi người dùng hỏi tiếp sau khi AI đã route sai hoặc đã gợi ý nhầm bài, hành vi của hệ thống ở lượt thứ 2 chưa được đo bằng metric chuyên biệt (recovery rate / correction success rate).
+  - **Nội dung ngoài giáo trình**: hiện tại chỉ cam kết “0% hallucination khi gặp chủ đề ngoài giáo trình”, nhưng chưa có dataset đủ lớn để đo ở mọi loại chủ đề nằm ngoài syllabus; do đó phần này được xác định là vùng kiểm soát an toàn chứ không phải khẳng định vô điều kiện về mọi trường hợp.
+  - **Không vượt qua ngưỡng chất lượng nếu**: (a) trích dẫn sai transcript, (b) route sai mục tiêu trong các case có ground truth rõ, (c) không kích hoạt fallback / G10 đúng khi câu hỏi mơ hồ hoặc ngoài phạm vi, hoặc (d) làm mất context học của người dùng sau khi đổi bài.
 
 - **Kết quả các lượt chạy (Dự kiến đo tại CP3 & CP4)**:
   | Lượt chạy | Routing Accuracy | Grounding Factuality | G10 Fallback Đúng | Ghi chú điều chỉnh |
