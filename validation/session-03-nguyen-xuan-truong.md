@@ -43,7 +43,6 @@ Không hướng dẫn nút, không giải thích UI.
 | 1:10 | Cột trái nhảy Day 4. Đọc slide, gật. Nói: “Đây, có số trang.” Job ôn **khép**. |
 | 2:00 | Hỏi thêm `Chain-of-Thought là gì` khi đang ở Day 4 → vẫn ra nguồn Day 4. Bấm nguồn. |
 | 2:40 | Muốn quay lại mạch Day 5. Kéo dropdown chọn Day 5 — **về trang 1**, không về trang đang đọc dở. |
-| 3:00 | Cứu hộ: “Bạn sẽ làm gì tiếp?” |
 | 3:10 | Soi trên cùng cột trái, **không bấm** Hoàn tác (không để ý). Chọn lại Day 5, tự lật trang. |
 | 4:20 | Hỏi `chỉ số tự động hóa sản phẩm AI` từ Day 5 vừa mở lại → ra nguồn Day 5. Bấm nguồn. |
 | 5:10 | Tự dừng. Không khen suông. |

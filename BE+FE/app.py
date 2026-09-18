@@ -73,6 +73,15 @@ st.markdown("""
         padding: 10px 12px;
         margin-top: 8px;
     }
+    .job-close-box {
+        background: #e8f0fe;
+        border: 1px solid #93c5fd;
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin: 8px 0;
+        font-size: 0.95rem;
+        line-height: 1.45;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -108,6 +117,23 @@ DEFAULT_LECTURES = [
     }
 ]
 
+WELCOME = (
+    "Bạn đang mở **Day 5: Quản trị sản phẩm AI**. "
+    "Nếu cần ôn kiến thức buổi trước, hãy hỏi theo mục tiêu "
+    "(ví dụ: *ôn lại few-shot đã học ở buổi trước*). "
+    "Mình tìm đúng bài và trang; bạn bấm nguồn bên dưới để mở. "
+    "Không có trong slide thì mình nói không có — không bịa."
+)
+
+MODE_LABELS = {
+    "cross_lecture": "Đã tìm thấy ở buổi khác",
+    "slide_locate": "Đang giải thích slide đang mở",
+    "prereq_bridge": "Gợi ý nền tảng cần ôn",
+    "g10": "Cần bạn chọn buổi — câu hỏi còn khớp nhiều nơi",
+    "fallback": "Không có trong giáo trình / ngoài phạm vi",
+    "current": "Trả lời trong buổi đang mở",
+}
+
 def resolve_lecture(f_name_raw):
     lid = normalize_lecture(f_name_raw)
     if lid:
@@ -127,10 +153,21 @@ def _init_extra_state():
         "forced_lecture": None,
         "replay_question": None,
         "last_user_question": None,
+        "lecture_pages": {},
     }
     for key, value in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = value
+
+
+def remember_page(file=None, page=None):
+    f = file or st.session_state.current_doc_file
+    p = st.session_state.current_page if page is None else page
+    st.session_state.lecture_pages[f] = int(p)
+
+
+def recall_page(file):
+    return int(st.session_state.lecture_pages.get(file) or 1)
 
 
 def apply_navigation(target_file, target_page):
@@ -138,6 +175,7 @@ def apply_navigation(target_file, target_page):
     if not os.path.exists(pdf_path):
         st.warning(f"Không mở được {target_file} — file PDF chưa có trong thư mục slide.")
         return
+    remember_page()
     st.session_state.nav_stack.append({
         "file": st.session_state.current_doc_file,
         "page": st.session_state.current_page,
@@ -150,6 +188,7 @@ def apply_navigation(target_file, target_page):
     }
     st.session_state.current_doc_file = target_file
     st.session_state.current_page = int(target_page)
+    remember_page(target_file, target_page)
     st.session_state.doc_version += 1
 
 
@@ -160,8 +199,20 @@ def undo_navigation():
     prev = st.session_state.nav_stack.pop()
     st.session_state.current_doc_file = prev["file"]
     st.session_state.current_page = prev["page"]
+    remember_page(prev["file"], prev["page"])
     st.session_state.undo_banner = None
     st.session_state.doc_version += 1
+
+
+def first_citation_label(citations):
+    if not citations:
+        return None
+    cit = citations[0]
+    name = cit.get("doc_name") or cit.get("file") or "bài đích"
+    page = cit.get("page")
+    if page:
+        return f"{name}, trang {page}"
+    return str(name)
 
 
 def reset_conversation(welcome: str):
@@ -230,13 +281,13 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "👋 Xin chào! Tôi là trợ lý học tập AI được nâng cấp cho hệ thống VinUni. Khác với VLearn chỉ cho phép hỏi đáp trong từng bài riêng lẻ, tôi có thể **tra cứu và liên kết kiến thức xuyên suốt tất cả các bài giảng** (Day 2 đến Day 6).\n\nBạn có thể hỏi bất kỳ điều gì, và tôi sẽ gắn kèm liên kết trang slide cụ thể để bạn kiểm chứng!",
+            "content": WELCOME,
             "citations": []
         }
     ]
 
 if "current_doc_file" not in st.session_state:
-    st.session_state.current_doc_file = DEFAULT_LECTURES[1]["file"]  # Mặc định mở Day 3
+    st.session_state.current_doc_file = DEFAULT_LECTURES[3]["file"]  # Day 5 — khớp job ôn từ bài đang học
 
 if "current_page" not in st.session_state:
     st.session_state.current_page = 1
@@ -255,101 +306,98 @@ with st.sidebar:
     st.caption("NotebookLM-style Cross-Lecture Q&A")
     st.divider()
 
-    # 1. Chọn Nhà Cung Cấp (Provider)
-    st.subheader("⚙️ Nhà Cung Cấp AI")
-    provider = st.selectbox(
-        "Nền tảng AI:",
-        options=["Google Gemini (Trực tiếp)", "OpenRouter (Đa mô hình: DeepSeek, Llama, Claude...)"],
-        index=0
-    )
-
-    if provider == "Google Gemini (Trực tiếp)":
-        st.subheader("🔑 Google Gemini API Key")
-        env_api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-        
-        key_mode = st.radio(
-            "Nguồn API Key:",
-            options=["Dùng Key mặc định từ .env", "Tự nhập Key khác (Khi hết token / Dự phòng)"],
-            index=0,
-            key="gemini_key_mode",
-            help="Khi key trong .env bị hết lượt gọi, hãy chuyển sang tuỳ chọn thứ 2 để dán key dự phòng"
+    with st.expander("⚙️ Nhà cung cấp AI (demo / dự phòng)", expanded=False):
+        provider = st.selectbox(
+            "Nền tảng AI:",
+            options=["Google Gemini (Trực tiếp)", "OpenRouter (Đa mô hình: DeepSeek, Llama, Claude...)"],
+            index=0
         )
 
-        if key_mode == "Dùng Key mặc định từ .env":
-            if env_api_key:
-                masked = env_api_key[:6] + "..." + env_api_key[-4:] if len(env_api_key) > 10 else "***"
-                st.success(f"✅ Đang dùng key .env: `{masked}`")
-                api_key = env_api_key
+        if provider == "Google Gemini (Trực tiếp)":
+            st.subheader("🔑 Google Gemini API Key")
+            env_api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+
+            key_mode = st.radio(
+                "Nguồn API Key:",
+                options=["Dùng Key mặc định từ .env", "Tự nhập Key khác (Khi hết token / Dự phòng)"],
+                index=0,
+                key="gemini_key_mode",
+                help="Khi key trong .env bị hết lượt gọi, hãy chuyển sang tuỳ chọn thứ 2 để dán key dự phòng"
+            )
+
+            if key_mode == "Dùng Key mặc định từ .env":
+                if env_api_key:
+                    masked = env_api_key[:6] + "..." + env_api_key[-4:] if len(env_api_key) > 10 else "***"
+                    st.success(f"✅ Đang dùng key .env: `{masked}`")
+                    api_key = env_api_key
+                else:
+                    st.warning("⚠️ Chưa tìm thấy GEMINI_API_KEY trong .env. Hãy điền vào file hoặc chọn 'Tự nhập Key khác' bên dưới.")
+                    api_key = ""
             else:
-                st.warning("⚠️ Chưa tìm thấy GEMINI_API_KEY trong .env. Hãy điền vào file hoặc chọn 'Tự nhập Key khác' bên dưới.")
-                api_key = ""
-        else:
-            api_key = st.text_input(
-                "Nhập API Key Gemini dự phòng:",
-                type="password",
-                placeholder="Dán mã API Key mới tại đây...",
-                help="Key này sẽ được ưu tiên sử dụng thay cho file .env"
+                api_key = st.text_input(
+                    "Nhập API Key Gemini dự phòng:",
+                    type="password",
+                    placeholder="Dán mã API Key mới tại đây...",
+                    help="Key này sẽ được ưu tiên sử dụng thay cho file .env"
+                )
+                if api_key:
+                    st.success("✅ Đang sử dụng key nhập thủ công!")
+
+            selected_model = st.selectbox(
+                "🤖 Mô hình Gemini:",
+                options=["gemini-3.7-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.6-flash"],
+                index=0,
+                help="gemini-3.7-flash và gemini-3.5-flash hiện đang chạy rất mượt và ổn định"
             )
-            if api_key:
-                st.success("✅ Đang sử dụng key nhập thủ công!")
 
-        # Chọn Model Gemini
-        selected_model = st.selectbox(
-            "🤖 Mô hình Gemini:",
-            options=["gemini-3.7-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.6-flash"],
-            index=0,
-            help="gemini-3.7-flash và gemini-3.5-flash hiện đang chạy rất mượt và ổn định"
-        )
-
-    else:
-        st.subheader("🔑 OpenRouter API Key")
-        env_or_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
-
-        or_key_mode = st.radio(
-            "Nguồn API Key OpenRouter:",
-            options=["Dùng Key mặc định từ .env", "Tự nhập Key OpenRouter"],
-            index=0 if env_or_key else 1,
-            key="or_key_mode"
-        )
-
-        if or_key_mode == "Dùng Key mặc định từ .env" and env_or_key:
-            masked = env_or_key[:8] + "..." + env_or_key[-4:] if len(env_or_key) > 12 else "***"
-            st.success(f"✅ Đang dùng key .env: `{masked}`")
-            api_key = env_or_key
         else:
-            api_key = st.text_input(
-                "Nhập OpenRouter API Key:",
-                type="password",
-                placeholder="sk-or-v1-...",
-                help="Lấy API Key tại openrouter.ai/keys"
-            )
-            if api_key:
-                st.success("✅ Đã nhận OpenRouter Key!")
+            st.subheader("🔑 OpenRouter API Key")
+            env_or_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
 
-        # Chọn Model OpenRouter
-        or_model_choice = st.selectbox(
-            "🤖 Mô hình OpenRouter:",
-            options=[
-                "deepseek/deepseek-chat",
-                "deepseek/deepseek-r1",
-                "meta-llama/llama-3.3-70b-instruct",
-                "anthropic/claude-3.5-sonnet",
-                "openai/gpt-4o-mini",
-                "google/gemini-2.0-flash-001",
-                "qwen/qwen-2.5-72b-instruct",
-                "Tự nhập Model ID khác..."
-            ],
-            index=0,
-            help="Danh sách các mô hình hàng đầu thế giới qua OpenRouter"
-        )
-
-        if or_model_choice == "Tự nhập Model ID khác...":
-            selected_model = st.text_input(
-                "Nhập Model ID OpenRouter (VD: meta-llama/llama-3.1-8b-instruct:free):",
-                value="meta-llama/llama-3.1-8b-instruct:free"
+            or_key_mode = st.radio(
+                "Nguồn API Key OpenRouter:",
+                options=["Dùng Key mặc định từ .env", "Tự nhập Key OpenRouter"],
+                index=0 if env_or_key else 1,
+                key="or_key_mode"
             )
-        else:
-            selected_model = or_model_choice
+
+            if or_key_mode == "Dùng Key mặc định từ .env" and env_or_key:
+                masked = env_or_key[:8] + "..." + env_or_key[-4:] if len(env_or_key) > 12 else "***"
+                st.success(f"✅ Đang dùng key .env: `{masked}`")
+                api_key = env_or_key
+            else:
+                api_key = st.text_input(
+                    "Nhập OpenRouter API Key:",
+                    type="password",
+                    placeholder="sk-or-v1-...",
+                    help="Lấy API Key tại openrouter.ai/keys"
+                )
+                if api_key:
+                    st.success("✅ Đã nhận OpenRouter Key!")
+
+            or_model_choice = st.selectbox(
+                "🤖 Mô hình OpenRouter:",
+                options=[
+                    "deepseek/deepseek-chat",
+                    "deepseek/deepseek-r1",
+                    "meta-llama/llama-3.3-70b-instruct",
+                    "anthropic/claude-3.5-sonnet",
+                    "openai/gpt-4o-mini",
+                    "google/gemini-2.0-flash-001",
+                    "qwen/qwen-2.5-72b-instruct",
+                    "Tự nhập Model ID khác..."
+                ],
+                index=0,
+                help="Danh sách các mô hình hàng đầu thế giới qua OpenRouter"
+            )
+
+            if or_model_choice == "Tự nhập Model ID khác...":
+                selected_model = st.text_input(
+                    "Nhập Model ID OpenRouter (VD: meta-llama/llama-3.1-8b-instruct:free):",
+                    value="meta-llama/llama-3.1-8b-instruct:free"
+                )
+            else:
+                selected_model = or_model_choice
 
     st.divider()
     st.subheader("📚 Kho Bài Giảng Đã Nạp")
@@ -366,10 +414,10 @@ with st.sidebar:
         st.markdown(f"{icon} **{lec['name']}**  \n`{lec['file']}`")
 
     st.divider()
-    st.info("💡 **Mẹo:** Bạn có thể bấm vào các nút trích dẫn trong câu trả lời của AI để khung xem slide bên trái tự động chuyển bài và nhảy trang.")
-    
+    st.info("Job chưa xong khi chỉ đọc chữ trong chat. Bấm nguồn để mở đúng trang — không cần tự tìm trong danh sách bài.")
+
     if st.button("🗑️ Xoá toàn bộ lịch sử chat", use_container_width=True):
-        reset_conversation("👋 Đã xoá toàn bộ lịch sử chat. Tôi có thể hỗ trợ gì cho bạn về các bài giảng từ Day 2 đến Day 6?")
+        reset_conversation(WELCOME)
         st.rerun()
 
 # ==========================================
@@ -389,12 +437,13 @@ with col_slide:
         undo_c1, undo_c2 = st.columns([3.2, 1.8])
         with undo_c1:
             st.markdown(
-                f"<div class='undo-banner'>Đã chuyển sang {to_lid} trang {banner['to_page']} "
-                f"(trước đó {from_lid} trang {banner['from_page']}).</div>",
+                f"<div class='undo-banner'>Đã mở {to_lid} trang {banner['to_page']}. "
+                f"Buổi đang học vẫn giữ ở {from_lid} trang {banner['from_page']}.</div>",
                 unsafe_allow_html=True,
             )
         with undo_c2:
-            if st.button("↩ Hoàn tác", use_container_width=True, key="undo_nav_btn"):
+            undo_label = f"↩ Về {from_lid} trang {banner['from_page']}"
+            if st.button(undo_label, use_container_width=True, key="undo_nav_btn"):
                 undo_navigation()
                 st.rerun()
     
@@ -414,8 +463,10 @@ with col_slide:
     )
 
     if selected_file != st.session_state.current_doc_file:
+        remember_page()
         st.session_state.current_doc_file = selected_file
-        st.session_state.current_page = 1
+        st.session_state.current_page = recall_page(selected_file)
+        st.session_state.doc_version += 1
         st.rerun()
 
     # Load file PDF động ngay theo bài giảng đang chọn
@@ -430,6 +481,7 @@ with col_slide:
             st.session_state.current_page = total_pages
         if st.session_state.current_page < 1:
             st.session_state.current_page = 1
+        remember_page()
 
         # Thanh điều hướng trang
         nav_c1, nav_c2, nav_c3, nav_c4 = st.columns([1.5, 2, 2, 1.5])
@@ -471,28 +523,24 @@ with col_chat:
     chat_hdr_col1, chat_hdr_col2 = st.columns([3.2, 1.8])
     with chat_hdr_col1:
         st.markdown("### 💬 Trợ Lý Đối Thoại Đa Bài Giảng")
-        st.caption("Khắc phục hạn chế của VLearn — Hỏi đáp liên bài giảng")
+        st.caption("Đang học một buổi · hỏi kiến thức buổi khác · bấm nguồn để mở trang")
     with chat_hdr_col2:
         if st.button("➕ Phiên mới", help="Tạo phiên hỏi đáp mới & làm sạch cuộc trò chuyện", use_container_width=True):
-            reset_conversation(
-                "✨ **Đã tạo phiên học mới!**\n\n"
-                "Bạn muốn tìm hiểu hoặc so sánh kiến thức nào từ các bài giảng (Day 2 đến Day 6)? "
-                "Hãy nhập câu hỏi bên dưới nhé!"
-            )
+            reset_conversation(WELCOME)
             st.rerun()
 
-    st.markdown("**Gợi ý — 4 đường đi khi tín hiệu rõ / mơ hồ:**")
+    st.markdown("**Hỏi theo mục tiêu — case chuẩn và chỗ khó:**")
     prompt_c1, prompt_c2 = st.columns(2)
     with prompt_c1:
-        if st.button("📍 Chỉ số tự động hóa (route D5)", use_container_width=True):
+        if st.button("ôn lại few-shot buổi trước", use_container_width=True):
+            st.session_state.suggested_prompt = "ôn lại few-shot đã học ở buổi trước"
+        if st.button("chỉ số tự động hóa sản phẩm AI", use_container_width=True):
             st.session_state.suggested_prompt = "chỉ số tự động hóa sản phẩm AI"
-        if st.button("📄 Explain this slide", use_container_width=True):
-            st.session_state.suggested_prompt = "explain this slide"
     with prompt_c2:
-        if st.button("❓ Bữa trước cái chi dợ (G10)", use_container_width=True):
-            st.session_state.suggested_prompt = "bữa trước cái chi dợ"
-        if st.button("❓ RAG là gì (G10 hỏi lại)", use_container_width=True):
+        if st.button("RAG là gì (khớp nhiều buổi)", use_container_width=True):
             st.session_state.suggested_prompt = "RAG là gì"
+        if st.button("attention mechanism là gì", use_container_width=True):
+            st.session_state.suggested_prompt = "attention mechanism là gì"
 
     st.divider()
 
@@ -504,9 +552,7 @@ with col_chat:
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
                 if msg.get("mode"):
-                    conf = msg.get("confidence")
-                    conf_txt = f" · conf {conf}" if conf is not None else ""
-                    st.caption(f"Nhánh `{msg.get('mode')}`{conf_txt}")
+                    st.caption(MODE_LABELS.get(msg.get("mode"), msg.get("mode")))
 
                 if msg.get("mode") == "g10" and msg.get("candidates") and idx == last_idx:
                     st.markdown('<div class="g10-box"><b>Thu hẹp phạm vi (G10)</b> — chọn một buổi để mình trả lời đúng ngữ cảnh.</div>', unsafe_allow_html=True)
@@ -546,7 +592,7 @@ with col_chat:
                     ids = [normalize_lecture(d["file"]) for d in visible]
                     current_target = msg.get("target_lecture")
                     pick = st.selectbox(
-                        "✎ Đổi bài nếu định tuyến chưa đúng",
+                        "Sai buổi? Đổi tại đây — không bắt buộc nếu đã đúng",
                         options=ids,
                         index=ids.index(current_target) if current_target in ids else 0,
                         format_func=lambda x: lecture_name(x),
@@ -558,8 +604,20 @@ with col_chat:
                         st.rerun()
 
                 if msg.get("citations"):
-                    st.markdown("**📌 Nguồn trích dẫn (Bấm để nhảy tới slide):**")
+                    found = first_citation_label(msg["citations"])
+                    st.markdown(
+                        f"<div class='job-close-box'><b>Đã tìm thấy ở {found}.</b> "
+                        "Bấm nguồn bên dưới để mở đúng trang — không cần tự tìm trong danh sách bài.</div>",
+                        unsafe_allow_html=True,
+                    )
+                    st.markdown("**Nguồn — bấm để mở đúng trang:**")
                     cols = st.columns(min(len(msg["citations"]), 3))
+                elif msg.get("role") == "assistant" and msg.get("target_lecture") == "D1" and idx == last_idx:
+                    st.markdown(
+                        "<div class='job-close-box'><b>Đã biết là Day 1 nhưng chưa nạp slide.</b> "
+                        "Hỏi few-shot, ReAct hoặc chỉ số tự động hóa (Day 2–6), hoặc dùng Đổi bài.</div>",
+                        unsafe_allow_html=True,
+                    )
                     for c_idx, cit in enumerate(msg["citations"]):
                         col_target = cols[c_idx % 3]
                         with col_target:
@@ -568,7 +626,7 @@ with col_chat:
                                 apply_navigation(cit["file"], int(cit["page"]))
                                 st.rerun()
 
-    user_input = st.chat_input("Hỏi về bài đang mở, slide này, hoặc ôn buổi khác (Day 2–6)...")
+    user_input = st.chat_input("Đang học Day 5? Hỏi khái niệm buổi trước, ví dụ: ôn lại few-shot")
     replay_forced = None
     if st.session_state.replay_question:
         user_input = st.session_state.pop("replay_question")

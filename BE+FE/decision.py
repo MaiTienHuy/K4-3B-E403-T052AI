@@ -315,7 +315,18 @@ def _template_answer(mode: str, question: str, current: str, target: str | None,
             f"(thay vì bài bạn đang xem ở cột trái).\n\n"
         )
     if not hits:
-        return banner + f"Mình hiểu bạn đang hỏi về {lecture_name(target or current)}, nhưng chưa lấy được trang nguồn."
+        name = lecture_name(target or current)
+        if (target or current) == "D1":
+            return banner + (
+                f"Mình xác định kiến thức này thuộc {name}, "
+                "nhưng slide Day 1 chưa có trong kho đang nạp nên không mở được đúng trang. "
+                "Bạn có thể hỏi một khái niệm đã có slide (Day 2–6) — ví dụ few-shot, ReAct, "
+                "chỉ số tự động hóa — hoặc dùng ✎ Đổi bài để chọn buổi khác."
+            )
+        return banner + (
+            f"Mình hiểu bạn đang hỏi về {name}, nhưng chưa lấy được trang nguồn trong kho slide. "
+            "Hãy hỏi lại bằng tên khái niệm cụ thể hơn, hoặc chọn một buổi Day 2–6."
+        )
     parts = [banner.strip(), ""] if banner else []
     for hit in hits[:3]:
         parts.append(f"- {_excerpt(hit['text'], 220)} [REF:{hit['file']}:{hit['page']}]")

@@ -1,7 +1,7 @@
 # AI SPEC — VLearn Course Navigator · Nhóm 03 · Zone A
 **Thành viên nhóm (4 thành viên):**
-- **Hoàng Ngọc Đức** (Leader / Product & AI Spec)
-- **Mai Tiến Huy** (Data Evidence & Evaluation)
+- **Mai Tiến Huy** (Leader / Product & AI Spec)
+- **Hoàng Ngọc Đức** (Data Evidence & Evaluation)
 - **Trịnh Xuân Huy** (Prompt Engineering & AI Router)
 - **Lê Việt Hoàng** (Code Prototype & Interactive Demo)
 
@@ -208,6 +208,7 @@ flowchart TD
   | Lượt 1 (Baseline - Tutor cũ) | 0.0% (bị khóa bài) | 28.0% | 15.0% | Tutor cũ luôn báo không có dữ liệu buổi trước |
   | Lượt 2 (Prototype Prompt v1) | 85.0% (17/20) | 95.0% | 85.0% | Vướng ở case từ khóa đa nghĩa (RAG xuất hiện nhiều bài) |
   | Lượt 3 (Prototype Prompt v2 + G10) | **95.0% (19/20)** | **100.0%** | **100.0%** | Bổ sung phân loại confidence score và menu G10 |
+  | Lượt 4 (CP5 · `report_latest.json`) | **100% (20/20)** | **100.0%** | **100.0%** | 17/20 đạt đủ 4 điều kiện (85%). 3 fail C01/C03/C09: route đúng Day 1 nhưng kho chưa có `day1.pdf` nên không có trang nguồn |
 
 ---
 
@@ -222,6 +223,7 @@ flowchart TD
   - **Học viên 2**: Trần Cao Quốc Định (hay gặp bế tắc khi muốn liên kết kiến thức lý thuyết giữa các buổi).
   - **Học viên 3**: Nguyễn Xuân Trường (đại diện nhóm người học cần tra cứu nhanh khái niệm kèm trích dẫn gốc).
   - **Kế hoạch validation**: Cho 3 bạn trực tiếp thao tác trên web prototype với 5 kịch bản thực tế (lấy từ Golden Set: câu hỏi bài 1, từ khóa đa nghĩa G10, ngoài phạm vi, hoàn tác G8/G9). Đo lường: Tỷ lệ hoàn thành tác vụ không cần trợ giúp, Thời gian tìm đúng bài (< 15s), và mức độ hài lòng về tính minh bạch trích dẫn (HAX G11).
+  - **Đã chạy R6 (18/09/2026)**: 3 willing user ngoài nhóm (Nguyễn Thái Lương, Trần Cao Quốc Định, Nguyễn Xuân Trường). Biên bản `validation/`. Chủ đề lặp: job chỉ khép khi bấm nguồn; quay lại buổi đang học dễ mất trang; Day 1 hết đường ôn. Xem §9.
 - **Multi-prototype (Trục khác biệt)**:
   - *Phương án 1 (Chủ động chuyển trang)*: Khi AI tự tin, tự động load bài mới vào màn hình chính. → *Bị loại*: Gây mất tập trung và khó chịu nếu học viên chỉ muốn tra cứu nhanh 1 định nghĩa.
   - *Phương án 2 (Được chọn — Thẻ điều hướng linh hoạt + Trích dẫn tại chỗ)*: Trả lời tóm tắt ngay trong khung chat kèm mã `[Txx-NNN]`, hiển thị nút bấm "Chuyển sang bài này" để học viên chủ động bấm khi thực sự muốn đổi màn hình học.
@@ -234,3 +236,13 @@ flowchart TD
 | 17/09/2026 20:00 | Khởi tạo Spec v1.0 cho Track A Course Navigator | Định hình giải pháp từ 42 bằng chứng chatlog và yêu cầu đề bài Mẫu 3 |
 | 17/09/2026 20:30 | Hoàn thiện §4 và §6 với 5 nguyên tắc HAX/PAIR và Sơ đồ luồng 4 nhánh | Chuẩn bị đầy đủ cơ sở thiết kế trước khi lập trình giao diện và bộ đo kiểm thử |
 | 17/09/2026 20:50 | Chốt danh sách 4 thành viên chính thức và phân công chi tiết §8 | Phân bổ rõ nét spec / evidence / prompt / code / demo theo đúng chuẩn Rubric |
+| 18/09/2026 22:10 | R6: 3 willing user ngoài nhóm (Lương, Định, Trường). Log `validation/` | CP5 / khối bonus R6 — task outcome “đang học bài 5, ôn X buổi trước” |
+| 18/09/2026 22:20 | CTA “Đã tìm thấy ở Day X, trang Y — bấm nguồn để mở”; mặc định mở Day 5; prompt theo outcome | V1-S2 Lương: có câu trả lời đúng nhưng tự lội dropdown, không bấm nguồn |
+| 18/09/2026 22:40 | Nhớ trang từng buổi khi đổi dropdown; nút hoàn tác ghi rõ “Về Day X trang N”; empty-state Day 1 có bước hỏi tiếp | V3-S2 Trường: chọn lại Day 5 bị về trang 1 · V3-S3 không thấy Hoàn tác · V2-S2 / C01·C03·C09 Định đứng vì chưa có `day1.pdf` |
+
+### Tổng hợp validation CP5 (4 dòng)
+
+- **Chủ đề lặp nhiều nhất:** job ôn chưa khép dù câu trả lời đúng buổi — người thử không bấm nguồn (Lương) hoặc nhảy bài rồi không về được đúng trang đang học (Trường); gặp Day 1 thì đứng vì không có slide (Định).
+- **Thay đổi đã làm:** (1) CTA nguồn + mặc định Day 5 + hỏi theo outcome; (2) nhớ trang mỗi buổi khi đổi dropdown, hoàn tác ghi rõ trang cũ, empty-state Day 1 có bước tiếp.
+- **Giữ nguyên có lý do:** không tự redirect lúc trả lời (G8 / cost-of-error — Lương và Trường: muốn đọc chữ rồi tự bấm, nhảy nhầm phá context); không tự chọn buổi khi G10 (Định: RAG học ở hơn một buổi).
+- **Backlog:** nạp `day1.pdf` để khép C01/C03/C09; tách hẳn cấu hình API khỏi màn hình học viên; đo recovery multi-turn sau khi route sai.
