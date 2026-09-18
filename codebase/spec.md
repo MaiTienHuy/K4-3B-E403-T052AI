@@ -106,8 +106,8 @@ Loại: [x] Tối ưu tính năng có sẵn  [ ] Tính năng mới
 | **KB-07** | Học viên hỏi nhầm tên giảng viên hoặc nhầm thứ tự buổi (ví dụ: *"Bài 3 về Transformer"* trong khi Transformer ở Day 1) | ④ Đặc thù domain | Đính chính nhẹ nhàng: *"Khái niệm Transformer được thầy giảng chi tiết ở Day 1 (Foundation) chứ không phải Day 3 (Đánh giá mô hình). Mình đã tìm thấy tài liệu ở Day 1 cho bạn đây."* | HAX G11, G9 |
 | **KB-08** | Học viên bấm "Chuyển sang bài 1" nhưng lỡ tay và muốn quay lại bài đang học | Giao diện / Chỗ khó thao tác | Lưu state bài học cũ, hiển thị thanh toast hoàn tác: *"Đã chuyển sang Day 1. [↩ Hoàn tác quay lại Day 3]"*. | HAX G8, G17 |
 
-- **Tự kiểm nguy hiểm khi demo**: Kịch bản làm nhóm sợ nhất là **KB-02 (tiêu đề xuất hiện ở nhiều buổi) + KB-08 (đổi bài nhầm / hoàn tác sai)**. Vì nếu demo ở 2 kịch bản này sai, hệ thống sẽ trông rất “thông minh” ở happy path nhưng lại làm học viên mất niềm tin ngay khi phải xử lý mơ hồ hoặc nhầm ngữ cảnh. Đây là rủi ro lớn vì sản phẩm này không chỉ trả lời đúng, mà còn phải **định tuyến đúng và không làm học viên mất context**.
-- **Kết luận**: Chưa có kịch bản nào đáng sợ nếu nhóm đã giải quyết tốt 2 nhánh này. Nếu demo được 2 kịch bản này tốt, phần còn lại (out-of-scope / prompt injection / quiz refusal) đã nằm trong vùng kiểm soát an toàn của hệ thống.
+- **Tự kiểm nguy hiểm khi demo**: Kịch bản đáng sợ nhất là **KB-02 (chủ đề xuất hiện ở nhiều buổi)** và **KB-08 (đổi bài nhầm / hoàn tác sai)**. Đây là 2 tình huống khiến người dùng có cảm giác hệ thống “trông rất thông minh ở happy path” nhưng mất niềm tin ngay khi gặp câu hỏi mơ hồ hoặc thao tác chuyển ngữ cảnh sai. Với sản phẩm này, rủi ro lớn không nằm ở việc trả lời thiếu kiến thức đơn lẻ, mà ở việc **định tuyến sai và phá vỡ context học**.
+- **Kết luận**: Đây là hai nhánh cần ưu tiên kiểm tra và demo nghiêm ngặt. Nếu 2 nhánh này ổn, các trường hợp còn lại (ngoài phạm vi, prompt injection, quiz refusal) nằm trong vùng kiểm soát an toàn.
 
 ---
 
